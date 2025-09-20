@@ -119,7 +119,7 @@ export function ContactForm() {
                   type="tel"
                   value={formData.phone}
                   onChange={handleChange}
-                  placeholder="+54 9 11 1234-5678"
+                  placeholder="+543329305210"
                   className="transition-all duration-300 focus:scale-[1.02]"
                 />
               </div>
