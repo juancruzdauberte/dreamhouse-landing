@@ -13,7 +13,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-dvh flex items-center justify-center overflow-hidden"
       id="hero"
     >
       {/* Background Image */}
@@ -97,7 +97,7 @@ export function HeroSection() {
       </div>
       {/* Scroll Indicator */}
       <div
-        className={`absolute bottom-16 sm:bottom-9  left-1/2 transform -translate-x-1/2 text-white animate-bounce transition-all duration-1000 ease-out delay-1200 ${
+        className={`absolute bottom-24 sm:bottom-9  left-1/2 transform -translate-x-1/2 text-white animate-bounce transition-all duration-1000 ease-out delay-1200 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
