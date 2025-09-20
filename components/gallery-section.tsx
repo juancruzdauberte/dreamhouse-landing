@@ -63,8 +63,8 @@ export function GallerySection() {
             delay={200}
             className="lg:col-span-2"
           >
-            <Card className="overflow-hidden group">
-              <CardContent className="p-0 relative">
+            <div className="overflow-hidden group">
+              <div className="relative">
                 <img
                   src={images[currentImage].src || "/placeholder.svg"}
                   alt={images[currentImage].alt}
@@ -94,8 +94,8 @@ export function GallerySection() {
                 <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
                   {currentImage + 1} / {images.length}
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </AnimatedSection>
 
           {/* Thumbnail Grid */}
@@ -104,25 +104,25 @@ export function GallerySection() {
             delay={400}
             className="space-y-4"
           >
-            <div className="grid grid-cols-2 gap-4 overflow-hidden">
+            <div className="grid grid-cols-2 gap-4 overflow-hidden p-2">
               {images.slice(0, 6).map((image, index) => (
-                <Card
+                <div
                   key={index}
                   className={`overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg ${
                     currentImage === index
-                      ? "ring-2 ring-primary scale-105"
-                      : "hover:scale-105"
+                      ? "ring-2 ring-primary ring-offset-2 ring-offset-background scale-105 shadow-lg"
+                      : "hover:scale-105 hover:shadow-md border-2 border-transparent hover:border-primary/20"
                   }`}
                   onClick={() => setCurrentImage(index)}
                 >
-                  <CardContent className="p-0">
+                  <div className="relative">
                     <img
                       src={image.src}
                       alt={image.alt}
-                      className="w-full h-40 object-cover transition-transform duration-300 hover:scale-110"
+                      className="w-full h-20 md:h-24 object-cover transition-transform duration-300"
                     />
-                  </CardContent>
-                </Card>
+                  </div>
+                </div>
               ))}
             </div>
 

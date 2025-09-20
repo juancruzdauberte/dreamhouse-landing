@@ -67,15 +67,15 @@ export function PropertyDescription() {
           </AnimatedSection>
 
           <AnimatedSection animation="fadeInRight" delay={400}>
-            <Card className="overflow-hidden group hover:shadow-xl transition-all duration-500">
-              <CardContent className="p-0">
+            <div className="overflow-hidden group hover:shadow-xl transition-all duration-500">
+              <div className="relative p-0">
                 <img
                   src="https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318377/WhatsApp_Image_2025-09-08_at_22.06.14_1_uksjyk.jpg"
                   alt="Interior de DreamHouse"
                   className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           </AnimatedSection>
         </div>
       </div>

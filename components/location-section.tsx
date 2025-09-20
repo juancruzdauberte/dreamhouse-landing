@@ -30,9 +30,9 @@ export function LocationSection() {
           {/* Map and Address */}
           <div className="space-y-6">
             <AnimatedSection animation="scaleIn" delay={200}>
-              <Card className="hover:shadow-lg transition-all duration-300 group">
-                <CardContent className="p-0">
-                  <div className="aspect-video rounded-lg overflow-hidden">
+              <div className="hover:shadow-lg bg-white transition-all duration-300 group">
+                <div className="relative">
+                  <div className="aspect-video overflow-hidden">
                     <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3315.54354768304!2d-59.512378999999996!3d-33.7982836!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95ba37a5f961f291%3A0x2a07d86015f4ca9e!2sche%20Guevara%20779%2C%20B2942%20Baradero%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses-419!2sar!4v1758322241047!5m2!1ses-419!2sar"
                       allowFullScreen
@@ -48,8 +48,8 @@ export function LocationSection() {
                     </p>
                     <p className="text-muted-foreground">Argentina</p>
                   </div>
-                </CardContent>
-              </Card>
+                </div>
+              </div>
             </AnimatedSection>
 
             {/* Transportation */}
