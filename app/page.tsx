@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer";
 import { FloatingNavbar } from "@/components/floating-navbar";
 import { AnimatedSection } from "@/components/animated-section";
 import { WhatsAppFloat } from "@/components/whatsapp-float";
+import AvailabilitySection from "@/components/availability-section";
 
 export default function Home() {
   return (
@@ -34,6 +35,11 @@ export default function Home() {
         </div>
       </AnimatedSection>
       <AnimatedSection animation="fadeInUp" delay={300}>
+        <div>
+          <AvailabilitySection />
+        </div>
+      </AnimatedSection>
+      <AnimatedSection animation="fadeInUp" delay={300}>
         <FAQSection />
       </AnimatedSection>
       <AnimatedSection animation="scaleIn" delay={200}>
@@ -41,6 +47,7 @@ export default function Home() {
           <LocationSection />
         </div>
       </AnimatedSection>
+
       <AnimatedSection animation="fadeInUp" delay={100}>
         <div id="reservar">
           <CTASection />
