@@ -1,7 +1,7 @@
 "use client";
 
 import { Separator } from "@/components/ui/separator";
-import { MapPin, Mail, Instagram, Facebook } from "lucide-react";
+import { MapPin, Mail, Instagram } from "lucide-react";
 import Image from "next/image";
 import { AnimatedSection } from "@/components/animated-section";
 

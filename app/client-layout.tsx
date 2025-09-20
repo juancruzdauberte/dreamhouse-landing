@@ -1,22 +1,28 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { Analytics } from "@vercel/analytics/next"
-import { useSearchParams } from "next/navigation"
-import { Suspense } from "react"
+import { Analytics } from "@vercel/analytics/next";
+import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
+
+function SearchParamsHandler() {
+  const searchParams = useSearchParams();
+  return null;
+}
 
 export default function ClientLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
-  const searchParams = useSearchParams()
-
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
+      <Suspense fallback={<div>Loading...</div>}>
+        <SearchParamsHandler />
+        {children}
+      </Suspense>
       <Analytics />
     </>
-  )
+  );
 }
