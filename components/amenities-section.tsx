@@ -59,8 +59,8 @@ export function AmenitiesSection() {
     },
     {
       icon: <Bath className="h-8 w-8" />,
-      label: "2 Baños",
-      detail: "Completos",
+      label: "1 Baño",
+      detail: "Completo",
     },
     {
       icon: <Utensils className="h-8 w-8" />,

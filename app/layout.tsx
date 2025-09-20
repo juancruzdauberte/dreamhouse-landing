@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "Colonia Suiza",
   ],
   icons: {
-    icon: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758327075/dreamhouse.002.b16_otamb4.ico",
+    icon: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758332216/dreamhouse.002.b16_ca7qgv.ico",
   },
 };
 
@@ -35,9 +35,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="es">
+    <html lang="es" className="overflow-x-hidden">
       <body
-        className={`font-sans ${GeistSans.variable} ${GeistMono.variable} ${playfair.variable}`}
+        className={`font-sans overflow-x-hidden max-w-full ${GeistSans.variable} ${GeistMono.variable} ${playfair.variable}`}
       >
         <ClientLayout>{children}</ClientLayout>
       </body>

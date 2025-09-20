@@ -46,13 +46,13 @@ export function GallerySection() {
 
   return (
     <section id="galeria" className="py-20 px-4 bg-muted/30">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto overflow-x-hidden">
         <AnimatedSection animation="fadeInUp" className="text-center mb-16">
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6">
             Galería
           </h2>
           <p className="text-xl text-muted-foreground">
-            Descubre cada rincón de tu próximo hogar temporal
+            Descubrí cada rincón de tu próximo hogar temporal
           </p>
         </AnimatedSection>
 
@@ -75,7 +75,7 @@ export function GallerySection() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white hover:scale-110 transition-all duration-200"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white hover:scale-110 transition-all duration-200 cursor-pointer"
                   onClick={prevImage}
                 >
                   <ChevronLeft className="h-4 w-4" />
@@ -84,7 +84,7 @@ export function GallerySection() {
                 <Button
                   variant="outline"
                   size="icon"
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white hover:scale-110 transition-all duration-200"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white hover:scale-110 transition-all duration-200 cursor-pointer"
                   onClick={nextImage}
                 >
                   <ChevronRight className="h-4 w-4" />
@@ -104,7 +104,7 @@ export function GallerySection() {
             delay={400}
             className="space-y-4"
           >
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-2 gap-4 overflow-hidden">
               {images.slice(0, 6).map((image, index) => (
                 <Card
                   key={index}
@@ -127,7 +127,7 @@ export function GallerySection() {
             </div>
 
             {/* Video Tour Card */}
-            <Card className="overflow-hidden cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-xl group">
+            {/* <Card className="overflow-hidden cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-xl group">
               <CardContent className="p-0 relative">
                 <video
                   src="https://player.cloudinary.com/embed/?cloud_name=dttpgbmdx&public_id=WhatsApp_Video_2025-09-19_at_20.29.38_zphtuf&profile=cld-default"
@@ -147,7 +147,7 @@ export function GallerySection() {
                   Tour Virtual
                 </div>
               </CardContent>
-            </Card>
+            </Card> */}
           </AnimatedSection>
         </div>
       </div>

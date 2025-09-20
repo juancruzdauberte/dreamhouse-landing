@@ -14,15 +14,14 @@ export function WhatsAppFloat() {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50">
       <Button
         onClick={handleWhatsAppClick}
         size="lg"
-        className="rounded-full w-14 h-14 bg-green-500 hover:bg-green-600 shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-110 animate-pulse hover:animate-none"
-        aria-label="Contactar por WhatsApp"
+        className="rounded-full w-12 h-12 md:w-16 md:h-16 bg-green-500 hover:bg-green-600 shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-110 animate-pulse hover:animate-none"
       >
         <svg
-          className="h-20 w-20 text-white"
+          className="h-6 w-6 md:h-8 md:w-8 text-white"
           fill="currentColor"
           viewBox="0 0 24 24"
         >

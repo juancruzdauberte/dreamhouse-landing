@@ -11,11 +11,11 @@ export function CTASection() {
       <div className="max-w-4xl mx-auto text-center">
         <AnimatedSection animation="fadeInUp" className="mb-12">
           <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 text-balance">
-            ¿Listo para tu Escape Soñado?
+            ¿Estás lista/o para tu Escape Soñado?
           </h2>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
-            Reserva ahora y asegura tu lugar en el paraíso. Tu experiencia
-            perfecta te está esperando.
+            Reserva ahora y asegura tu lugar. Tu experiencia de paz y
+            tranquilidad te está esperando.
           </p>
         </AnimatedSection>
 

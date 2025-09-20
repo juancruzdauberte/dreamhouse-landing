@@ -12,7 +12,10 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      id="hero"
+    >
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -24,15 +27,14 @@ export function HeroSection() {
         />
         <div className="absolute inset-0 bg-black/20" />
       </div>
-
       {/* Content */}
       <div
-        className={`relative z-10 text-center text-white px-4 max-w-4xl mx-auto transition-all duration-1000 ease-out ${
+        className={`relative z-10 text-center text-white px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto transition-all duration-1000 ease-out ${
           isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
         }`}
       >
         <div
-          className={`mb-8 transition-all duration-1200 ease-out delay-300 ${
+          className={`mb-6 sm:mb-8 transition-all duration-1200 ease-out delay-300 ${
             isLoaded ? "opacity-100 scale-100" : "opacity-0 scale-95"
           }`}
         >
@@ -41,35 +43,36 @@ export function HeroSection() {
             alt="DreamHouse Baradero"
             width={200}
             height={120}
-            className="mx-auto mb-6 hover:scale-110 transition-transform duration-300 rounded-full"
+            className="mx-auto mb-4 sm:mb-6 hover:scale-110 transition-transform duration-300 w-32 sm:w-40 md:w-48 h-auto rounded-full"
           />
         </div>
 
         <h1
-          className={`font-[family-name:var(--font-playfair)] text-5xl md:text-7xl font-bold mb-6 text-balance transition-all duration-1000 ease-out delay-500 ${
+          className={`font-[family-name:var(--font-playfair)] text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-4 sm:mb-6 text-balance transition-all duration-1000 ease-out delay-500 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          Tu Escape Soñado
+          Tu escape soñado
         </h1>
 
         <p
-          className={`text-xl md:text-2xl mb-8 text-pretty opacity-90 max-w-2xl mx-auto transition-all duration-1000 ease-out delay-700 ${
+          className={`text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 text-pretty opacity-90 max-w-2xl mx-auto transition-all duration-1000 ease-out delay-700 ${
             isLoaded ? "opacity-90 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          Descubre la tranquilidad perfecta en nuestra casa quinta de lujo en
-          Baradero, Buenos Aires
+          Descubrí la <em className="font-bold text-amber-200">tranquilidad</em>{" "}
+          perfecta en nuestra casa quinta de lujo en Baradero, Provincia de
+          Buenos Aires.
         </p>
 
         <div
-          className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 ease-out delay-1000 ${
+          className={`flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center transition-all duration-1000 ease-out delay-1000 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
           <Button
             size="lg"
-            className="bg-amber-700 hover:bg-amber-900/70 text-primary-foreground px-8 py-4 text-lg transform hover:scale-105 transition-all duration-200 hover:shadow-lg"
+            className="bg-amber-700 hover:bg-amber-900/70 text-primary-foreground px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg w-full max-w-[200px] sm:w-auto transform hover:scale-105 transition-all duration-200 hover:shadow-lg cursor-pointer"
             onClick={() =>
               document
                 .getElementById("reservar")
@@ -81,7 +84,7 @@ export function HeroSection() {
           <Button
             variant="outline"
             size="lg"
-            className="border-white text-white hover:bg-white hover:text-black px-8 py-4 text-lg bg-transparent transform hover:scale-105 transition-all duration-200 hover:shadow-lg"
+            className="border-white text-white hover:bg-white hover:text-black px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg bg-transparent w-full max-w-[200px] sm:w-auto transform hover:scale-105 transition-all duration-200 hover:shadow-lg cursor-pointer"
             onClick={() =>
               document
                 .getElementById("galeria")
@@ -92,28 +95,34 @@ export function HeroSection() {
           </Button>
         </div>
       </div>
-
       {/* Scroll Indicator */}
-      <a
-        className={`absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white animate-bounce transition-all duration-1000 ease-out delay-1200 ${
+      <div
+        className={`absolute bottom-8 sm:bottom-9  left-1/2 transform -translate-x-1/2 text-white animate-bounce transition-all duration-1000 ease-out delay-1200 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
-        href="#descripcion"
       >
-        <svg
-          className="w-6 h-6 hover:scale-110 transition-transform duration-200"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
+        <a
+          className={`absolute  left-1/2 transform -translate-x-1/2 text-white animate-bounce transition-all duration-1000 ease-out delay-1200 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          href="#descripcion"
         >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M19 14l-7 7m0 0l-7-7m7 7V3"
-          />
-        </svg>
-      </a>
+          <svg
+            className="w-6 h-6 hover:scale-110 transition-transform duration-200"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 14l-7 7m0 0l-7-7m7 7V3"
+            />
+          </svg>
+        </a>
+      </div>
+      \
     </section>
   );
 }

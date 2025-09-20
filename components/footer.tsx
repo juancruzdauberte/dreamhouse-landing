@@ -28,7 +28,9 @@ export function Footer() {
                 <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold">
                   DreamHouse
                 </h3>
-                <p className="text-sm text-muted-foreground">Baradero</p>
+                <p className="text-sm text-muted-foreground">
+                  Baradero, Buenos Aires.
+                </p>
               </div>
             </div>
             <p className="text-muted-foreground mb-4 max-w-md">
@@ -39,7 +41,7 @@ export function Footer() {
             <div className="flex gap-4">
               <a
                 href="#"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+                className="text-muted-foreground hover:text-primary transition-all duration-200"
               >
                 <Instagram
                   className="h-5 w-5"
@@ -50,7 +52,7 @@ export function Footer() {
               <a
                 href="https://www.tiktok.com/@dreamhouse165?_t=ZM-8zryCOYfmQe&_r=1"
                 target="_blank"
-                className="text-muted-foreground hover:text-primary transition-all duration-300 hover:scale-110 hover:-translate-y-1"
+                className="text-muted-foreground hover:text-primary transition-all duration-200"
               >
                 <svg
                   className="h-5 w-5"
@@ -121,7 +123,7 @@ export function Footer() {
         <AnimatedSection animation="fadeInUp" delay={500}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
-              © 2024 DreamHouse Baradero. Todos los derechos reservados.
+              © 2025 DreamHouse Baradero. Todos los derechos reservados.
             </p>
           </div>
         </AnimatedSection>
