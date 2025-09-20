@@ -15,6 +15,10 @@ export function GallerySection() {
       alt: "Exterior con piscina",
     },
     {
+      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758394502/WhatsApp_Image_2025-09-20_at_15.52.10_1_vzy2pj.jpg",
+      alt: "Sector de piscina",
+    },
+    {
       src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318377/WhatsApp_Image_2025-09-08_at_22.06.14_1_uksjyk.jpg",
       alt: "Sala de estar",
     },
@@ -105,7 +109,7 @@ export function GallerySection() {
             className="space-y-4"
           >
             <div className="grid grid-cols-2 gap-4 overflow-hidden p-2">
-              {images.slice(0, 6).map((image, index) => (
+              {images.slice(0, 7).map((image, index) => (
                 <div
                   key={index}
                   className={`overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg ${
@@ -119,7 +123,7 @@ export function GallerySection() {
                     <img
                       src={image.src}
                       alt={image.alt}
-                      className="w-full h-20 md:h-24 object-cover transition-transform duration-300"
+                      className="w-full h-40 md:h-24 object-cover transition-transform duration-300"
                     />
                   </div>
                 </div>

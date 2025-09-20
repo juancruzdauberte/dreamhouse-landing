@@ -26,9 +26,9 @@ export function FloatingNavbar() {
 
   const navItems = [
     { label: "Inicio", id: "hero" },
-    { label: "Propiedad", id: "descripcion" },
     { label: "Galería", id: "galeria" },
     { label: "Servicios", id: "servicios" },
+    { label: "Disponibilidad", id: "disponibilidad" },
     { label: "Ubicación", id: "ubicacion" },
     { label: "Contacto", id: "reservar" },
   ];

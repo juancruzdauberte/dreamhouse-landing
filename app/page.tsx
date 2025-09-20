@@ -35,7 +35,7 @@ export default function Home() {
         </div>
       </AnimatedSection>
       <AnimatedSection animation="fadeInUp" delay={300}>
-        <div>
+        <div id="disponibilidad">
           <AvailabilitySection />
         </div>
       </AnimatedSection>
