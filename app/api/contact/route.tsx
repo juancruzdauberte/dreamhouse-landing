@@ -7,7 +7,6 @@ export async function POST(request: NextRequest) {
   try {
     const { name, email, phone, message } = await request.json();
 
-    // Validate required fields
     if (!name || !email || !message) {
       return NextResponse.json(
         { error: "Nombre, email y mensaje son requeridos" },
@@ -15,9 +14,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: "DreamHouse Baradero <noreply@dreamhousebaradero.com>", // You'll need to configure this domain in Resend
+      from: "DreamHouse <noreply@dreamhousebaradero.com>",
       to: ["dreamhousebaradero779@gmail.com"],
       subject: `Nueva consulta de ${name} - DreamHouse Baradero`,
       html: `
