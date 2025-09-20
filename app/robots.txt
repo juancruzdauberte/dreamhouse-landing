@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dreamhouse-baradero.vercel.app/sitemap.xml
+Sitemap: https://dreamhousebaradero.com/sitemap.xml
