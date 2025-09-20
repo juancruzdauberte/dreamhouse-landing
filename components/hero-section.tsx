@@ -97,18 +97,20 @@ export function HeroSection() {
       </div>
       {/* Scroll Indicator */}
       <div
-        className={`absolute bottom-30 sm:bottom-9  left-1/2 transform -translate-x-1/2 text-white animate-bounce transition-all duration-1000 ease-out delay-1200 ${
+        className={`absolute bottom-20 sm:bottom-9  left-1/2 transform -translate-x-1/2 text-white animate-bounce transition-all duration-1000 ease-out delay-1200 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       >
-        <a
-          className={`absolute  left-1/2 transform -translate-x-1/2 text-white animate-bounce transition-all duration-1000 ease-out delay-1200 ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          }`}
-          href="#descripcion"
+        <button
+          className="hover:scale-110 transition-transform duration-200 cursor-pointer"
+          onClick={() =>
+            document
+              .getElementById("descripcion")
+              ?.scrollIntoView({ behavior: "smooth" })
+          }
         >
           <svg
-            className="w-6 h-6 hover:scale-110 transition-transform duration-200"
+            className="w-6 h-6"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -120,7 +122,7 @@ export function HeroSection() {
               d="M19 14l-7 7m0 0l-7-7m7 7V3"
             />
           </svg>
-        </a>
+        </button>
       </div>
       \
     </section>
