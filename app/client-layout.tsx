@@ -20,7 +20,7 @@ export default function ClientLayout({
   return (
     <>
       <LoadingSpinner />
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<LoadingSpinner />}>
         <SearchParamsHandler />
         {children}
       </Suspense>
