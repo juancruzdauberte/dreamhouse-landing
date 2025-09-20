@@ -23,7 +23,7 @@ export default function CalendarDemo() {
   return (
     <section className="py-20 px-4 bg-muted/30">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
-        <h3 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-12">
+        <h3 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-5 md:mb-10">
           Calendario de disponibilidad
         </h3>
         <div className="flex flex-col md:flex-row w-full items-center md:items-start justify-center gap-5 lg:gap-20">
@@ -39,7 +39,7 @@ export default function CalendarDemo() {
           <Calendar
             mode="single"
             locale={es}
-            className="rounded-md border w-full max-w-sm"
+            className="rounded-md border w-full max-w-sm h-[400px] bg-white"
             disabled={[{ before: new Date() }, ...datesNotAvailable]}
             modifiers={{
               booked: (date) => isDateBooked(date),
