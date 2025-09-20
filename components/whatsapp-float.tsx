@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 export function WhatsAppFloat() {
   const handleWhatsAppClick = () => {
     const message =
-      "Hola! Me interesa hacer una reserva en DreamHouse Baradero. ¿Podrían darme más información?";
+      "Hola! Me interesa hacer una reserva en DreamHouse Baradero, del (poner fecha) al (poner fecha) para (cantidad de personas). ¿Podrían darme más información?";
     const phoneNumber = "543329305210";
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
       message
