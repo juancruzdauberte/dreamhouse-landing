@@ -13,7 +13,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-dvh flex items-center justify-center overflow-hidden"
+      className="relative h-screen flex items-center justify-center overflow-hidden touch-pan-y"
       id="hero"
     >
       {/* Background Image */}
@@ -22,7 +22,7 @@ export function HeroSection() {
           src="https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318385/WhatsApp_Image_2025-09-08_at_22.06.13_1_zi0lt9.jpg"
           alt="DreamHouse Baradero exterior"
           fill
-          className="object-cover transition-transform duration-[3000ms] ease-out hover:scale-105 "
+          className="object-cover transition-transform duration-[3000ms] ease-out"
           priority
         />
         <div className="absolute inset-0 bg-black/20" />
@@ -43,7 +43,7 @@ export function HeroSection() {
             alt="DreamHouse Baradero"
             width={200}
             height={120}
-            className="mx-auto mb-4 sm:mb-6 hover:scale-110 transition-transform duration-300 w-32 sm:w-40 md:w-48 h-auto rounded-full"
+            className="mx-auto mb-4 sm:mb-6 transition-transform duration-300 w-40 md:w-48 h-auto rounded-full"
           />
         </div>
 

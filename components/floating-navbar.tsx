@@ -82,7 +82,22 @@ export function FloatingNavbar() {
             </div>
 
             {/* Mobile menu button */}
-            <div className="md:hidden">
+            <div className="md:hidden flex items-center space-x-2">
+              <div
+                className={`transition-all duration-300 ${
+                  isMobileMenuOpen
+                    ? "opacity-0 scale-95 pointer-events-none"
+                    : "opacity-100 scale-100"
+                }`}
+              >
+                <Button
+                  onClick={() => scrollToSection("reservar")}
+                  size="sm"
+                  className="bg-primary hover:bg-primary/90 text-white text-xs rounded-sm"
+                >
+                  Reservar
+                </Button>
+              </div>
               <button
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                 className="text-gray-700 hover:text-primary p-2"

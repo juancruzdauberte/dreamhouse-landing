@@ -200,7 +200,7 @@ export function ContactForm() {
                 className="flex-1 transition-all duration-300 bg-transparent hover:bg-green-50 hover:border-green-500 hover:text-green-600 w-full max-w-[160px] md:max-w-[200px] py-1"
                 onClick={() =>
                   window.open(
-                    "https://wa.me/5491123456789?text=Hola, me interesa hacer una reserva en DreamHouse Baradero",
+                    "https://wa.me/543329305210?text=Hola, me interesa hacer una reserva en DreamHouse Baradero",
                     "_blank"
                   )
                 }
