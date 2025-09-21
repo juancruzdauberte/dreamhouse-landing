@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
-import { AnimatedSection } from "@/components/animated-section";
+import { AnimatedSection } from "@/components/sections/animated-section";
 
 export function GallerySection() {
   const [currentImage, setCurrentImage] = useState(0);

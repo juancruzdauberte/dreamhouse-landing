@@ -8,17 +8,18 @@ import {
   ChefHat,
   Tv,
   Wind,
-  Shield,
-  Coffee,
   Utensils,
   Bed,
   Bath,
   TreePine,
+  Ban,
+  ShowerHead,
 } from "lucide-react";
-import { AnimatedSection } from "@/components/animated-section";
+import { AnimatedSection } from "@/components/sections/animated-section";
+import { NoTowelWidget } from "../widgets/NoTowelWidget";
 
 export function AmenitiesSection() {
-  const amenities = [
+  const specifications = [
     {
       icon: <Waves className="h-8 w-8" />,
       title: "Piscina",
@@ -49,28 +50,36 @@ export function AmenitiesSection() {
       title: "Smart TV",
       description: "Entretenimiento con Netflix y streaming",
     },
-  ];
-
-  const specifications = [
     {
       icon: <Bed className="h-8 w-8" />,
-      label: "3 Dormitorios",
-      detail: "3 camas matrimoniales y 3 individuales",
+      title: "3 Dormitorios",
+      description: "3 camas matrimoniales y 3 individuales",
     },
     {
       icon: <Bath className="h-8 w-8" />,
-      label: "1 Baño",
-      detail: "Completo",
+      title: "1 Baño",
+      description: "A la brevedad tendremos 2",
+    },
+    {
+      icon: <NoTowelWidget />,
+      title: "Toallas",
+      description: "No ofrecemos toallas",
+    },
+
+    {
+      icon: <TreePine className="h-8 w-8" />,
+      title: "Jardín",
+      description: "Espacio verde amplio",
     },
     {
       icon: <Utensils className="h-8 w-8" />,
-      label: "Cocina",
-      detail: "Totalmente equipada",
+      title: "Cocina",
+      description: "Totalmente equipada",
     },
     {
       icon: <TreePine className="h-8 w-8" />,
-      label: "Jardín",
-      detail: "Espacio verde amplio",
+      title: "Jardín",
+      description: "Espacio verde amplio",
     },
   ];
 
@@ -99,32 +108,9 @@ export function AmenitiesSection() {
                   <div className="flex justify-center mb-4 text-primary transition-all duration-300 group-hover:scale-110 group-hover:text-primary/80">
                     {spec.icon}
                   </div>
-                  <h3 className="font-semibold mb-2">{spec.label}</h3>
-                  <p className="text-sm text-muted-foreground">{spec.detail}</p>
-                </CardContent>
-              </Card>
-            </AnimatedSection>
-          ))}
-        </div>
-
-        {/* Amenities Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {amenities.map((amenity, index) => (
-            <AnimatedSection
-              key={index}
-              animation="fadeInUp"
-              delay={index * 50}
-            >
-              <Card className="hover:shadow-lg transition-all duration-300 hover:scale-105 hover:-translate-y-1 group">
-                <CardHeader className="text-center pb-4">
-                  <div className="flex justify-center mb-4 text-primary transition-all duration-300 group-hover:scale-110 group-hover:rotate-6">
-                    {amenity.icon}
-                  </div>
-                  <CardTitle className="text-lg">{amenity.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="pt-0">
-                  <p className="text-sm text-muted-foreground text-center">
-                    {amenity.description}
+                  <h3 className="font-semibold mb-2">{spec.title}</h3>
+                  <p className="text-sm text-muted-foreground">
+                    {spec.description}
                   </p>
                 </CardContent>
               </Card>

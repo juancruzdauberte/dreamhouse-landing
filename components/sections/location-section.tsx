@@ -3,7 +3,7 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Clock, Car, Plane } from "lucide-react";
-import { AnimatedSection } from "@/components/animated-section";
+import { AnimatedSection } from "@/components/sections/animated-section";
 
 export function LocationSection() {
   const nearbyAttractions = [

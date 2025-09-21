@@ -2,8 +2,8 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Star, Calendar, Users, Shield } from "lucide-react";
-import { AnimatedSection } from "@/components/animated-section";
-import { ContactForm } from "@/components/ContactForm";
+import { AnimatedSection } from "@/components/sections/animated-section";
+import { ContactForm } from "@/components/layouts/ContactForm";
 
 export function CTASection() {
   return (

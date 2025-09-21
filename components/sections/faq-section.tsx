@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { AnimatedSection } from "@/components/animated-section";
+import { AnimatedSection } from "@/components/sections/animated-section";
 import { useState } from "react";
 
 export function FAQSection() {

@@ -8,7 +8,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent } from "@/components/ui/card";
 import { Loader2, Send, CheckCircle, Mail } from "lucide-react";
-import { AnimatedSection } from "@/components/animated-section";
+import { AnimatedSection } from "@/components/sections/animated-section";
 
 export function ContactForm() {
   const [formData, setFormData] = useState({

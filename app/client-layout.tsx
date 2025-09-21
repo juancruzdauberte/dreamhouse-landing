@@ -5,7 +5,7 @@ import type React from "react";
 import { Analytics } from "@vercel/analytics/next";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
-import LoadingSpinner from "@/components/loading-spinner";
+import LoadingSpinner from "@/components/widgets/loading-spinner";
 
 function SearchParamsHandler() {
   const searchParams = useSearchParams();

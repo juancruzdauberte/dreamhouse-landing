@@ -1,15 +1,15 @@
-import { HeroSection } from "@/components/hero-section";
-import { PropertyDescription } from "@/components/property-description";
-import { GallerySection } from "@/components/gallery-section";
-import { AmenitiesSection } from "@/components/amenities-section";
-import { FAQSection } from "@/components/faq-section";
-import { LocationSection } from "@/components/location-section";
-import { CTASection } from "@/components/cta-section";
-import { Footer } from "@/components/footer";
-import { FloatingNavbar } from "@/components/floating-navbar";
-import { AnimatedSection } from "@/components/animated-section";
-import { WhatsAppFloat } from "@/components/whatsapp-float";
-import AvailabilitySection from "@/components/availability-section";
+import { HeroSection } from "@/components/sections/hero-section";
+import { PropertyDescription } from "@/components/sections/property-description";
+import { GallerySection } from "@/components/sections/gallery-section";
+import { AmenitiesSection } from "@/components/sections/amenities-section";
+import { FAQSection } from "@/components/sections/faq-section";
+import { LocationSection } from "@/components/sections/location-section";
+import { CTASection } from "@/components/sections/cta-section";
+import { Footer } from "@/components/layouts/footer";
+import { FloatingNavbar } from "@/components/layouts/floating-navbar";
+import { AnimatedSection } from "@/components/sections/animated-section";
+import { WhatsAppFloat } from "@/components/widgets/whatsapp-float";
+import AvailabilitySection from "@/components/sections/availability-section";
 
 export default function Home() {
   return (

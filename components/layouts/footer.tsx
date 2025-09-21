@@ -3,7 +3,7 @@
 import { Separator } from "@/components/ui/separator";
 import { MapPin, Mail, Instagram } from "lucide-react";
 import Image from "next/image";
-import { AnimatedSection } from "@/components/animated-section";
+import { AnimatedSection } from "@/components/sections/animated-section";
 
 export function Footer() {
   return (
