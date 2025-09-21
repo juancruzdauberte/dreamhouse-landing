@@ -55,7 +55,7 @@ export function LocationSection() {
             {/* Transportation */}
             <div className="grid sm:grid-cols-2 gap-4">
               <AnimatedSection animation="fadeInLeft" delay={300}>
-                <Card className="hover:shadow-lg transition-all duration-300 group">
+                <Card className="hover:shadow-lg transition-all duration-300 group bg-white">
                   <CardHeader className="pb-3">
                     <div className="flex items-center gap-2">
                       <Car className="h-5 w-5 text-primary transition-all duration-300 group-hover:scale-110" />
@@ -74,7 +74,7 @@ export function LocationSection() {
               </AnimatedSection>
 
               <AnimatedSection animation="fadeInRight" delay={400}>
-                <Card className="hover:shadow-lg transition-all duration-300 group">
+                <Card className="hover:shadow-lg transition-all duration-300 group bg-white">
                   <CardHeader className="pb-3">
                     <div className="flex items-center gap-2">
                       <Plane className="h-5 w-5 text-primary transition-all duration-300 group-hover:scale-110" />
@@ -110,7 +110,7 @@ export function LocationSection() {
                   animation="fadeInUp"
                   delay={300 + index * 50}
                 >
-                  <Card className="hover:shadow-md transition-all duration-300 hover:scale-[1.02] hover:border-primary/20 group">
+                  <Card className="hover:shadow-md transition-all duration-300 hover:scale-[1.02] hover:border-primary/20 group bg-white">
                     <CardContent className="p-4">
                       <div className="flex items-center justify-between">
                         <div>
