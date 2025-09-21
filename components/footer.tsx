@@ -11,11 +11,7 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-4 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           {/* Logo and Description */}
-          <AnimatedSection
-            animation="fadeInUp"
-            delay={100}
-            className="md:col-span-2"
-          >
+          <div className="md:col-span-2">
             <div className="flex items-center gap-3 mb-4">
               <Image
                 src="https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318130/dreamhouse.002.b16_ibpty8.jpg"
@@ -63,10 +59,10 @@ export function Footer() {
                 </svg>
               </a>
             </div>
-          </AnimatedSection>
+          </div>
 
           {/* Contact Info */}
-          <AnimatedSection animation="fadeInUp" delay={200}>
+          <div>
             <h4 className="font-semibold mb-4">Contacto</h4>
             <div className="space-y-3">
               <div className="flex items-start gap-2 group">
@@ -92,10 +88,10 @@ export function Footer() {
                 </a>
               </div>
             </div>
-          </AnimatedSection>
+          </div>
 
           {/* Quick Links */}
-          <AnimatedSection animation="fadeInUp" delay={300}>
+          <div>
             <h4 className="font-semibold mb-4">Enlaces Rápidos</h4>
             <div className="space-y-2">
               {[
@@ -113,20 +109,20 @@ export function Footer() {
                 </a>
               ))}
             </div>
-          </AnimatedSection>
+          </div>
         </div>
 
-        <AnimatedSection animation="fadeIn" delay={400}>
+        <div>
           <Separator className="my-8" />
-        </AnimatedSection>
+        </div>
 
-        <AnimatedSection animation="fadeInUp" delay={500}>
+        <div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-muted-foreground">
               © 2025 DreamHouse Baradero. Todos los derechos reservados.
             </p>
           </div>
-        </AnimatedSection>
+        </div>
       </div>
     </footer>
   );
