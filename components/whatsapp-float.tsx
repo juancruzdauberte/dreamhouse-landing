@@ -18,7 +18,7 @@ export function WhatsAppFloat() {
       <Button
         onClick={handleWhatsAppClick}
         size="lg"
-        className="rounded-full w-12 h-12 md:w-16 md:h-16 bg-green-500 hover:bg-green-600 shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-110 animate-pulse hover:animate-none"
+        className="rounded-full w-12 h-12 md:w-16 md:h-16 bg-green-500 hover:bg-green-600 shadow-2xl hover:shadow-green-500/25 transition-all duration-300 hover:scale-110 animate-pulse hover:animate-none cursor-pointer"
       >
         <svg
           className="h-6 w-6 md:h-8 md:w-8 text-white"

@@ -22,7 +22,7 @@ export function Footer() {
               />
               <div>
                 <h3 className="font-[family-name:var(--font-playfair)] text-xl font-bold">
-                  DreamHouse
+                  Dreamhouse
                 </h3>
                 <p className="text-sm text-muted-foreground">
                   Baradero, Buenos Aires.

@@ -27,9 +27,9 @@ export default function CalendarDemo() {
           Calendario de disponibilidad
         </h3>
         <div className="flex flex-col md:flex-row w-full items-center md:items-start justify-center gap-5 lg:gap-20">
-          <div>
+          <div className="bg-white p-2 rounded-md border">
             <p className="flex items-center gap-2">
-              <span className="text-green-500 text-2xl">•</span> Disponible
+              <span className="text-green-700 text-2xl">•</span> Disponible
             </p>
             <p className="flex items-center gap-2">
               <span className="text-orange-500 text-2xl">•</span>No Disponible

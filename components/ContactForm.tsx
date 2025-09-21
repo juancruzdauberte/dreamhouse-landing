@@ -161,7 +161,7 @@ export function ContactForm() {
               type="submit"
               size="lg"
               disabled={isSubmitting}
-              className="w-full max-w-[300px] text-lg py-6 hover:scale-105 transition-all duration-300 hover:shadow-lg"
+              className="w-full max-w-[300px] text-lg py-6 hover:scale-105 transition-all duration-300 hover:shadow-lg cursor-pointer"
             >
               {isSubmitting ? (
                 <>
@@ -185,7 +185,7 @@ export function ContactForm() {
               <Button
                 variant="outline"
                 size="sm"
-                className="flex-1 hover:bg-white hover:border-amber-800 hover:text-amber-800 transition-all duration-300 bg-transparent w-full max-w-[160px] md:max-w-[200px] py-1"
+                className="flex-1 hover:bg-white hover:border-amber-800 hover:text-amber-800 transition-all duration-300 bg-transparent w-full max-w-[160px] md:max-w-[200px] py-1 cursor-pointer"
                 onClick={() =>
                   (window.location.href =
                     "mailto:dreamhousebaradero779@gmail.com?subject=Consulta de Reserva - DreamHouse Baradero")
@@ -197,7 +197,7 @@ export function ContactForm() {
               <Button
                 variant="outline"
                 size="sm"
-                className="flex-1 transition-all duration-300 bg-transparent hover:bg-green-50 hover:border-green-500 hover:text-green-600 w-full max-w-[160px] md:max-w-[200px] py-1"
+                className="flex-1 transition-all duration-300 bg-transparent hover:bg-green-50 hover:border-green-500 hover:text-green-600 w-full max-w-[160px] md:max-w-[200px] py-1 cursor-pointer"
                 onClick={() =>
                   window.open(
                     "https://wa.me/543329305210?text=Hola! Me interesa hacer una reserva en DreamHouse Baradero, del (poner fecha) al (poner fecha) para (cantidad de personas). ¿Podrían darme más información?",

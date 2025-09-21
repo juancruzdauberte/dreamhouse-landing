@@ -7,13 +7,16 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { AnimatedSection } from "@/components/animated-section";
+import { useState } from "react";
 
 export function FAQSection() {
+  const [openItem, setOpenItem] = useState<string | null>(null);
+
   const faqs = [
     {
       question: "¿Cuál es la capacidad máxima de la propiedad?",
       answer:
-        "DreamHouse puede alojar cómodamente hasta 9 personas en 3 dormitorios con camas matrimoniales e individuales. Contamos con ropa de cama de alta  para todos los huéspedes pero no incluimos toallas de baño.",
+        "Dreamhouse puede alojar cómodamente hasta 9 personas en 3 dormitorios con camas matrimoniales e individuales. Contamos con ropa de cama de alta  para todos los huéspedes pero no incluimos toallas de baño.",
     },
     {
       question: "¿Qué incluye el alquiler?",
@@ -53,26 +56,44 @@ export function FAQSection() {
           </p>
         </AnimatedSection>
 
-        <Accordion type="single" collapsible className="space-y-4">
-          {faqs.map((faq, index) => (
-            <AnimatedSection
-              key={index}
-              animation="fadeInUp"
-              delay={index * 100}
-            >
-              <AccordionItem
-                value={`item-${index}`}
-                className="bg-card rounded-lg px-6 hover:shadow-md transition-all duration-300 hover:scale-[1.02] border border-transparent hover:border-primary/20"
+        <Accordion
+          type="single"
+          collapsible
+          className="space-y-4"
+          value={openItem || ""}
+          onValueChange={(value) => setOpenItem(value)}
+        >
+          {faqs.map((faq, index) => {
+            const itemValue = `item-${index}`;
+            const isActive = openItem === itemValue;
+
+            return (
+              <AnimatedSection
+                key={index}
+                animation="fadeInUp"
+                delay={index * 100}
               >
-                <AccordionTrigger className="cursor-pointer text-left hover:no-underline py-6 transition-colors duration-200 hover:text-primary">
-                  <span className="font-semibold">{faq.question}</span>
-                </AccordionTrigger>
-                <AccordionContent className="pb-6 text-muted-foreground leading-relaxed">
-                  {faq.answer}
-                </AccordionContent>
-              </AccordionItem>
-            </AnimatedSection>
-          ))}
+                <AccordionItem
+                  value={itemValue}
+                  className={`bg-white rounded-lg px-6 hover:shadow-md transition-all duration-300 hover:scale-[1.02] border border-transparent hover:border-primary/20`}
+                >
+                  <AccordionTrigger className="cursor-pointer text-left hover:no-underline py-6 transition-colors duration-200 ">
+                    <span
+                      className={`font-semibold ${
+                        isActive &&
+                        "border-b text-primary hover:text-primary/70"
+                      }`}
+                    >
+                      {faq.question}
+                    </span>
+                  </AccordionTrigger>
+                  <AccordionContent className="pb-6 text-muted-foreground leading-relaxed">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              </AnimatedSection>
+            );
+          })}
         </Accordion>
       </div>
     </section>
