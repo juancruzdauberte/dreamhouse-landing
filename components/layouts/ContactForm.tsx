@@ -68,7 +68,7 @@ export function ContactForm() {
               ¡Mensaje Enviado!
             </h3>
             <p className="text-muted-foreground mb-6">
-              Gracias por contactarnos. Te responderemos en menos de 2 horas.
+              Gracias por contactarnos. Te responderemos a la brevedad.
             </p>
             <Button onClick={() => setIsSubmitted(false)} variant="outline">
               Enviar otro mensaje

@@ -47,17 +47,6 @@ export function CTASection() {
         </AnimatedSection>
 
         <ContactForm />
-
-        <AnimatedSection
-          animation="fadeIn"
-          delay={600}
-          className="mt-8 text-sm text-muted-foreground"
-        >
-          <p>
-            Respuesta garantizada en menos de 2 horas • Atención personalizada •
-            Mejor precio directo
-          </p>
-        </AnimatedSection>
       </div>
     </section>
   );

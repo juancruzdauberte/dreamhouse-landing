@@ -95,18 +95,25 @@ export function Footer() {
             <h4 className="font-semibold mb-4">Enlaces Rápidos</h4>
             <div className="space-y-2">
               {[
-                { href: "#galeria", text: "Galería" },
-                { href: "#servicios", text: "Servicios" },
-                { href: "#ubicacion", text: "Ubicación" },
-                { href: "#reservar", text: "Reservar" },
-              ].map((link, index) => (
-                <a
-                  key={index}
-                  href={link.href}
-                  className="block text-sm text-muted-foreground hover:text-primary transition-all duration-300 hover:translate-x-1"
+                { id: "galeria", text: "Galería" },
+                { id: "servicios", text: "Servicios" },
+                { id: "ubicacion", text: "Ubicación" },
+                { id: "disponibilidad", text: "Disponibilidad" },
+                { id: "reservar", text: "Reservar" },
+              ].map((link) => (
+                <button
+                  key={link.id}
+                  onClick={() =>
+                    document
+                      .getElementById(link.id)
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className={`block text-sm text-muted-foreground hover:text-primary transition-all duration-300 hover:translate-x-1 cursor-pointer ${
+                    link.id === "reservar" && "font-semibold"
+                  }`}
                 >
                   {link.text}
-                </a>
+                </button>
               ))}
             </div>
           </div>
