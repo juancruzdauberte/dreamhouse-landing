@@ -12,6 +12,8 @@ export default function CalendarDemo() {
     { from: new Date(2025, 10, 1), to: new Date(2025, 10, 1) },
     { from: new Date(2025, 10, 21), to: new Date(2025, 10, 22) },
     { from: new Date(2025, 10, 28), to: new Date(2025, 10, 29) },
+    { from: new Date(2025, 11, 29), to: new Date(2026, 0, 1) },
+    { from: new Date(2026, 1, 16), to: new Date(2026, 1, 19) },
   ];
 
   const isDateBooked = (date: Date) =>
