@@ -6,6 +6,7 @@ import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./client-layout";
 import Head from "next/head";
+import JsonLd from "@/components/seo/JsonLd";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -65,6 +66,18 @@ export const metadata: Metadata = {
       },
     ],
   },
+  icons: {
+    icon: [
+      {
+        url: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758332216/dreamhouse.002.b16_ca7qgv.ico",
+        sizes: "any",
+      },
+    ],
+    shortcut:
+      "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758332216/dreamhouse.002.b16_ca7qgv.ico",
+    apple:
+      "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758332216/dreamhouse.002.b16_ca7qgv.ico",
+  },
   twitter: {
     card: "summary_large_image",
     title: "Dreamhouse Baradero - Casa de Alquiler Vacacional",
@@ -87,68 +100,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="overflow-x-hidden">
-      <Head>
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-        />
-        <meta name="geo.region" content="AR-BA" />
-        <meta
-          name="geo.placename"
-          content="Baradero, Buenos Aires, Argentina"
-        />
-        <meta name="geo.position" content="-33.8,-59.5" />
-        <meta name="ICBM" content="-33.8,-59.5" />
-        <link rel="canonical" href="https://www.dreamhousebaradero.com" />
-        <link
-          rel="icon"
-          href="https://res.cloudinary.com/dttpgbmdx/image/upload/v1758332216/dreamhouse.002.b16_ca7qgv.ico"
-          sizes="any"
-        />
-        <link
-          rel="icon"
-          href="https://res.cloudinary.com/dttpgbmdx/image/upload/v1758332216/dreamhouse.002.b16_ca7qgv.ico"
-          type="image/x-icon"
-        />
-        <link
-          rel="shortcut icon"
-          href="https://res.cloudinary.com/dttpgbmdx/image/upload/v1758332216/dreamhouse.002.b16_ca7qgv.ico"
-        />
-        <link rel="preconnect" href="https://res.cloudinary.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LodgingBusiness",
-              name: "Dreamhouse Baradero",
-              description:
-                "Casa quinta de lujo para alquiler vacacional en Baradero, Buenos Aires, Argentina.",
-              image: [
-                "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318383/WhatsApp_Image_2025-09-08_at_22.06.11_2_xmyrtr.jpg",
-              ],
-              url: "https://www.dreamhousebaradero.com",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Baradero",
-                addressRegion: "Buenos Aires",
-                addressCountry: "AR",
-              },
-              geo: {
-                "@type": "GeoCoordinates",
-                latitude: -33.8,
-                longitude: -59.5,
-              },
-              telephone: "+54 3329 305210",
-              priceRange: "$$$",
-            }),
-          }}
-        />
-      </Head>
       <body
         className={`font-sans overflow-x-hidden max-w-full ${GeistSans.variable} ${GeistMono.variable} ${playfair.variable}`}
       >
+        <JsonLd />
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

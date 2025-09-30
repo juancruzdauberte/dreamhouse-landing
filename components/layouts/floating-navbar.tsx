@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
+import Head from "next/head";
 
 export function FloatingNavbar() {
   const [isVisible, setIsVisible] = useState(false);
