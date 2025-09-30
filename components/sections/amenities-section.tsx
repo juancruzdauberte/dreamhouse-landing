@@ -12,8 +12,6 @@ import {
   Bed,
   Bath,
   TreePine,
-  Ban,
-  ShowerHead,
 } from "lucide-react";
 import { AnimatedSection } from "@/components/sections/animated-section";
 import { NoTowelWidget } from "../widgets/NoTowelWidget";

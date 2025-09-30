@@ -10,9 +10,9 @@ export function CTASection() {
     <section id="reservar" className="py-20 px-4 bg-primary/5">
       <div className="max-w-4xl mx-auto text-center">
         <AnimatedSection animation="fadeInUp" className="mb-12">
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 text-balance">
+          <h5 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6 text-balance">
             ¿Estás lista/o para tu Escape Soñado?
-          </h2>
+          </h5>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto text-pretty">
             Reserva ahora y asegura tu lugar. Tu experiencia de paz y
             tranquilidad te está esperando.

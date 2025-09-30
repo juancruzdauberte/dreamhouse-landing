@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { AnimatedSection } from "@/components/sections/animated-section";
+import Image from "next/image";
 
 export function GallerySection() {
   const [currentImage, setCurrentImage] = useState(0);
@@ -52,9 +52,9 @@ export function GallerySection() {
     <section id="galeria" className="py-20 px-4 bg-muted/30">
       <div className="max-w-6xl mx-auto overflow-x-hidden">
         <AnimatedSection animation="fadeInUp" className="text-center mb-16">
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6">
+          <p className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6">
             Galería
-          </h2>
+          </p>
           <p className="text-xl text-muted-foreground">
             Descubrí cada rincón de tu próximo hogar temporal
           </p>
@@ -69,9 +69,11 @@ export function GallerySection() {
           >
             <div className="overflow-hidden group">
               <div className="relative">
-                <img
+                <Image
                   src={images[currentImage].src || "/placeholder.svg"}
                   alt={images[currentImage].alt}
+                  height={600}
+                  width={1920}
                   className="w-full h-[600px] object-cover transition-transform duration-500 group-hover:scale-105"
                 />
 
@@ -120,9 +122,11 @@ export function GallerySection() {
                   onClick={() => setCurrentImage(index)}
                 >
                   <div className="relative">
-                    <img
+                    <Image
                       src={image.src}
                       alt={image.alt}
+                      width={400}
+                      height={160}
                       className="w-full h-40 md:h-24 object-cover transition-transform duration-300"
                     />
                   </div>

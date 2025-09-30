@@ -5,6 +5,7 @@ import { GeistMono } from "geist/font/mono";
 import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "./client-layout";
+import Head from "next/head";
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
@@ -86,7 +87,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className="overflow-x-hidden">
-      <head>
+      <Head>
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -113,7 +114,38 @@ export default function RootLayout({
           rel="shortcut icon"
           href="https://res.cloudinary.com/dttpgbmdx/image/upload/v1758332216/dreamhouse.002.b16_ca7qgv.ico"
         />
-      </head>
+        <link rel="preconnect" href="https://res.cloudinary.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "LodgingBusiness",
+              name: "Dreamhouse Baradero",
+              description:
+                "Casa quinta de lujo para alquiler vacacional en Baradero, Buenos Aires, Argentina.",
+              image: [
+                "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318383/WhatsApp_Image_2025-09-08_at_22.06.11_2_xmyrtr.jpg",
+              ],
+              url: "https://www.dreamhousebaradero.com",
+              address: {
+                "@type": "PostalAddress",
+                addressLocality: "Baradero",
+                addressRegion: "Buenos Aires",
+                addressCountry: "AR",
+              },
+              geo: {
+                "@type": "GeoCoordinates",
+                latitude: -33.8,
+                longitude: -59.5,
+              },
+              telephone: "+54 3329 305210",
+              priceRange: "$$$",
+            }),
+          }}
+        />
+      </Head>
       <body
         className={`font-sans overflow-x-hidden max-w-full ${GeistSans.variable} ${GeistMono.variable} ${playfair.variable}`}
       >

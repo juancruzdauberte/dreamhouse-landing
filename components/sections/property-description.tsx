@@ -2,6 +2,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/sections/animated-section";
+import Image from "next/image";
 
 export function PropertyDescription() {
   return (
@@ -24,7 +25,7 @@ export function PropertyDescription() {
             className="space-y-6"
           >
             <div>
-              <h3 className="text-2xl font-semibold mb-4">Diseño y Confort</h3>
+              <p className="text-2xl font-semibold mb-4">Diseño y Confort</p>
               <p className="text-muted-foreground leading-relaxed">
                 Nuestra propiedad combina la elegancia moderna con la calidez
                 del hogar. Cada espacio ha sido cuidadosamente diseñado para
@@ -33,9 +34,9 @@ export function PropertyDescription() {
             </div>
 
             <div>
-              <h3 className="text-2xl font-semibold mb-4">
+              <p className="text-2xl font-semibold mb-4">
                 Ubicación Privilegiada
-              </h3>
+              </p>
               <p className="text-muted-foreground leading-relaxed">
                 Situada en el corazón de Baradero, tendrás acceso fácil a las
                 principales atracciones de la ciudad mientras disfrutas de la
@@ -68,9 +69,11 @@ export function PropertyDescription() {
           <AnimatedSection animation="fadeInRight" delay={400}>
             <div className="overflow-hidden group hover:shadow-xl transition-all duration-500">
               <div className="relative p-0">
-                <img
+                <Image
                   src="https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318377/WhatsApp_Image_2025-09-08_at_22.06.14_1_uksjyk.jpg"
                   alt="Interior de DreamHouse"
+                  height={400}
+                  width={1920}
                   className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
                 />
               </div>

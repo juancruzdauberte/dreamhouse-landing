@@ -18,9 +18,9 @@ export function LocationSection() {
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
         <AnimatedSection animation="fadeInUp" className="text-center mb-16">
-          <h2 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6">
+          <p className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6">
             Ubicación Privilegiada
-          </h2>
+          </p>
           <p className="text-xl text-muted-foreground">
             En el corazón de Baradero, cerca de todo lo que importa
           </p>
