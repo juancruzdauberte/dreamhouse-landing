@@ -56,6 +56,7 @@ export function AmenitiesSection() {
     {
       icon: <Bath className="h-8 w-8" />,
       title: "2 Baños",
+      description: "Planta alta y baja",
     },
     {
       icon: <NoTowelWidget />,

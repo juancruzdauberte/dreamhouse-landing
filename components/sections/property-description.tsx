@@ -48,7 +48,8 @@ export function PropertyDescription() {
               {[
                 "Capacidad 9 personas",
                 "3 Dormitorios",
-                "1 Baño",
+                "6 camas",
+                "2 Baños",
                 "Piscina",
                 "Jardín",
                 "Aire acondicionado",
