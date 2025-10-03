@@ -55,8 +55,7 @@ export function AmenitiesSection() {
     },
     {
       icon: <Bath className="h-8 w-8" />,
-      title: "1 Baño",
-      description: "A la brevedad tendremos 2",
+      title: "2 Baños",
     },
     {
       icon: <NoTowelWidget />,
