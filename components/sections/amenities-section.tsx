@@ -51,7 +51,8 @@ export function AmenitiesSection() {
     {
       icon: <Bed className="h-8 w-8" />,
       title: "3 Dormitorios",
-      description: "3 camas matrimoniales y 3 individuales",
+      description:
+        "3 camas matrimoniales y 3 individuales. Incluyen ropa de cama",
     },
     {
       icon: <Bath className="h-8 w-8" />,

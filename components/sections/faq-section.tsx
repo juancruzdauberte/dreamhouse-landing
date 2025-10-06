@@ -19,9 +19,14 @@ export function FAQSection() {
         "Dreamhouse puede alojar cómodamente hasta 9 personas en 3 dormitorios con camas matrimoniales e individuales. Contamos con ropa de cama de alta  para todos los huéspedes pero no incluimos toallas de baño.",
     },
     {
+      question: "¿Como puedo reservar en Dreamhouse Baradero?",
+      answer:
+        "Para reservar en Dreamhouse Baradero debes contactarte con nosotros. Se reserva abonando el 30% de la estadía.",
+    },
+    {
       question: "¿Qué incluye el alquiler?",
       answer:
-        "El alquiler incluye acceso completo a la propiedad, WiFi gratuito, uso de la piscina, parrilla, cocina totalmente equipada, aire acondicionado, Smart TV con Netflix y estacionamiento.",
+        "El alquiler incluye acceso completo a la propiedad, WiFi gratuito, uso de la piscina, parrilla, cocina totalmente equipada, ropa de cama, aire acondicionado, Smart TV con Netflix y estacionamiento. Lo que no ofrecemos son toallas.",
     },
     {
       question: "¿Cuáles son las políticas de check-in y check-out?",
