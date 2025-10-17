@@ -4,6 +4,7 @@ import { AnimatedSection } from "@/components/sections/animated-section";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import VideoLayout from "../layouts/VideoLayout";
+import { useDrag } from "@use-gesture/react"; // 1. Importa el hook
 
 export function PropertyDescription() {
   const [currentVideo, setCurrentVideo] = useState(0);
@@ -37,6 +38,23 @@ export function PropertyDescription() {
     const newIndex = (currentVideo - 1 + videos.length) % videos.length;
     changeVideo(newIndex);
   };
+  const bind = useDrag(
+    ({ active, movement: [mx], direction: [dx], cancel }) => {
+      // Definimos un umbral para que un pequeño toque no cambie el video
+      const swipeThreshold = 50;
+
+      if (active && Math.abs(mx) > swipeThreshold) {
+        if (dx > 0) {
+          // Swipe hacia la derecha
+          prevVideo();
+        } else {
+          // Swipe hacia la izquierda
+          nextVideo();
+        }
+        cancel(); // Cancelamos el gesto para evitar múltiples cambios
+      }
+    }
+  );
 
   return (
     <section className="py-20 px-4">
@@ -104,7 +122,10 @@ export function PropertyDescription() {
             className="h-full flex items-center"
           >
             <div className="relative w-full group">
-              <div className="overflow-hidden rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl">
+              <div
+                {...bind()}
+                className="overflow-hidden rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl"
+              >
                 <div
                   className={`relative w-full transition-opacity duration-300 ${
                     isChanging ? "opacity-0" : "opacity-100"
