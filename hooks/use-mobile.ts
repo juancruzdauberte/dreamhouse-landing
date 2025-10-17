@@ -1,19 +1,24 @@
-import * as React from 'react'
+"use client";
+import { useState, useEffect } from "react";
 
-const MOBILE_BREAKPOINT = 768
+export function useIsMobile(breakpoint = 768) {
+  const [isMobile, setIsMobile] = useState(false);
 
-export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined)
+  useEffect(() => {
+    // Función para verificar el tamaño de la ventana
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < breakpoint);
+    };
 
-  React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`)
-    const onChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    }
-    mql.addEventListener('change', onChange)
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT)
-    return () => mql.removeEventListener('change', onChange)
-  }, [])
+    // Llama a la función una vez al montar para establecer el estado inicial
+    handleResize();
 
-  return !!isMobile
+    // Agrega el listener para futuros cambios de tamaño
+    window.addEventListener("resize", handleResize);
+
+    // Limpia el listener al desmontar el componente para evitar fugas de memoria
+    return () => window.removeEventListener("resize", handleResize);
+  }, [breakpoint]);
+
+  return isMobile;
 }

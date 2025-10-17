@@ -4,6 +4,7 @@ import { AnimatedSection } from "@/components/sections/animated-section";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import VideoLayout from "../layouts/VideoLayout";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 export function PropertyDescription() {
   const [currentVideo, setCurrentVideo] = useState(0);
@@ -38,6 +39,7 @@ export function PropertyDescription() {
     changeVideo(newIndex);
   };
 
+  const isMobile = useIsMobile();
   return (
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -110,7 +112,10 @@ export function PropertyDescription() {
                     isChanging ? "opacity-0" : "opacity-100"
                   }`}
                 >
-                  <VideoLayout id={videos[currentVideo]} />
+                  <VideoLayout
+                    id={videos[currentVideo]}
+                    aspec_ratio={isMobile ? "9:16" : "1:1"}
+                  />
                 </div>
               </div>
 
