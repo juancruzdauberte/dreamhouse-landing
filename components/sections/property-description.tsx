@@ -1,10 +1,43 @@
 "use client";
-import "next-cloudinary/dist/cld-video-player.css";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/sections/animated-section";
-import { CldVideoPlayer } from "next-cloudinary";
+import { useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import VideoLayout from "../layouts/VideoLayout";
 
 export function PropertyDescription() {
+  const [currentVideo, setCurrentVideo] = useState(0);
+  const [isChanging, setIsChanging] = useState(false);
+  // Array de videos - agrega aquí los IDs de tus videos de Cloudinary
+  const videos = [
+    "WhatsApp_Video_2025-09-19_at_20.29.38_ondrsh",
+    "IMG_7842_wd6zmf",
+    "IMG_7613_o8ywoa",
+    "IMG_7838_eqjhym",
+    "IMG_7834_zejyh2",
+  ];
+  // const videoWithControlsId = "WhatsApp_Video_2025-09-19_at_20.29.38_ondrsh";
+
+  const changeVideo = (newIndex: number) => {
+    setIsChanging(true); // Inicia la transición (fade out)
+
+    // Espera a que termine la animación de fade-out (300ms)
+    setTimeout(() => {
+      setCurrentVideo(newIndex);
+      setIsChanging(false); // Termina la transición (fade in)
+    }, 300);
+  };
+
+  const nextVideo = () => {
+    const newIndex = (currentVideo + 1) % videos.length;
+    changeVideo(newIndex);
+  };
+
+  const prevVideo = () => {
+    const newIndex = (currentVideo - 1 + videos.length) % videos.length;
+    changeVideo(newIndex);
+  };
+
   return (
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -65,23 +98,57 @@ export function PropertyDescription() {
             </div>
           </AnimatedSection>
 
-          {/* --- CAMBIOS EN ESTA SECCIÓN --- */}
           <AnimatedSection
             animation="fadeInRight"
             delay={400}
-            className="h-full"
+            className="h-full flex items-center"
           >
-            <div className="overflow-hidden group hover:shadow-xl transition-all duration-500 h-full ">
-              <div className="relative h-[500px] lg:h-[650px]">
-                <CldVideoPlayer
-                  src="IMG_7842_wd6zmf"
-                  className="absolute w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  autoplay
-                  muted
-                  loop
-                  controls={false}
-                />
+            <div className="relative w-full group">
+              <div className="overflow-hidden rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl">
+                <div
+                  className={`relative w-full transition-opacity duration-300 ${
+                    isChanging ? "opacity-0" : "opacity-100"
+                  }`}
+                >
+                  <VideoLayout id={videos[currentVideo]} />
+                </div>
               </div>
+
+              {/* Botones de navegación - solo si hay más de 1 video */}
+              {videos.length > 1 && (
+                <>
+                  <button
+                    onClick={prevVideo}
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110"
+                    aria-label="Video anterior"
+                  >
+                    <ChevronLeft className="w-6 h-6" />
+                  </button>
+                  <button
+                    onClick={nextVideo}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110"
+                    aria-label="Video siguiente"
+                  >
+                    <ChevronRight className="w-6 h-6" />
+                  </button>
+
+                  {/* Indicadores de posición */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {videos.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentVideo(index)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === currentVideo
+                            ? "bg-white w-8"
+                            : "bg-white/50 hover:bg-white/75"
+                        }`}
+                        aria-label={`Ir al video ${index + 1}`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
           </AnimatedSection>
         </div>
