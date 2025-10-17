@@ -12,7 +12,7 @@ export default function VideoLayout({ id }: VideoLayoutProps) {
       src={id}
       transformation={{
         crop: "fill",
-        aspect_ratio: "1:1",
+        aspect_ratio: "4:5",
         gravity: "center",
       }}
       className="absolute w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"

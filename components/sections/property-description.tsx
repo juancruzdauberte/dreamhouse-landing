@@ -4,7 +4,6 @@ import { AnimatedSection } from "@/components/sections/animated-section";
 import { useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import VideoLayout from "../layouts/VideoLayout";
-import { useDrag } from "@use-gesture/react"; // 1. Importa el hook
 
 export function PropertyDescription() {
   const [currentVideo, setCurrentVideo] = useState(0);
@@ -38,23 +37,6 @@ export function PropertyDescription() {
     const newIndex = (currentVideo - 1 + videos.length) % videos.length;
     changeVideo(newIndex);
   };
-  const bind = useDrag(
-    ({ active, movement: [mx], direction: [dx], cancel }) => {
-      // Definimos un umbral para que un pequeño toque no cambie el video
-      const swipeThreshold = 50;
-
-      if (active && Math.abs(mx) > swipeThreshold) {
-        if (dx > 0) {
-          // Swipe hacia la derecha
-          prevVideo();
-        } else {
-          // Swipe hacia la izquierda
-          nextVideo();
-        }
-        cancel(); // Cancelamos el gesto para evitar múltiples cambios
-      }
-    }
-  );
 
   return (
     <section className="py-20 px-4">
@@ -122,10 +104,7 @@ export function PropertyDescription() {
             className="h-full flex items-center"
           >
             <div className="relative w-full group">
-              <div
-                {...bind()}
-                className="overflow-hidden rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl"
-              >
+              <div className="overflow-hidden rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl">
                 <div
                   className={`relative w-full transition-opacity duration-300 ${
                     isChanging ? "opacity-0" : "opacity-100"
@@ -140,14 +119,14 @@ export function PropertyDescription() {
                 <>
                   <button
                     onClick={prevVideo}
-                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110"
+                    className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 cursor-pointer"
                     aria-label="Video anterior"
                   >
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button
                     onClick={nextVideo}
-                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 opacity-0 group-hover:opacity-100 hover:scale-110"
+                    className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 cursor-pointer"
                     aria-label="Video siguiente"
                   >
                     <ChevronRight className="w-6 h-6" />
