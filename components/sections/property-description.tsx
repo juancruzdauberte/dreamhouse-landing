@@ -1,8 +1,8 @@
 "use client";
-
+import "next-cloudinary/dist/cld-video-player.css";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/sections/animated-section";
-import Image from "next/image";
+import { CldVideoPlayer } from "next-cloudinary";
 
 export function PropertyDescription() {
   return (
@@ -18,7 +18,7 @@ export function PropertyDescription() {
           </p>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="grid md:grid-cols-2 gap-12 items-stretch">
           <AnimatedSection
             animation="fadeInLeft"
             delay={200}
@@ -32,7 +32,6 @@ export function PropertyDescription() {
                 ofrecerte la máxima comodidad durante tu estadía.
               </p>
             </div>
-
             <div>
               <p className="text-2xl font-semibold mb-4">
                 Ubicación Privilegiada
@@ -43,7 +42,6 @@ export function PropertyDescription() {
                 tranquilidad de un entorno natural.
               </p>
             </div>
-
             <div className="flex flex-wrap gap-2">
               {[
                 "Capacidad 9 personas",
@@ -67,15 +65,21 @@ export function PropertyDescription() {
             </div>
           </AnimatedSection>
 
-          <AnimatedSection animation="fadeInRight" delay={400}>
-            <div className="overflow-hidden group hover:shadow-xl transition-all duration-500">
-              <div className="relative p-0">
-                <Image
-                  src="https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318377/WhatsApp_Image_2025-09-08_at_22.06.14_1_uksjyk.jpg"
-                  alt="Interior de DreamHouse"
-                  height={400}
-                  width={1920}
-                  className="w-full h-[400px] object-cover transition-transform duration-700 group-hover:scale-110"
+          {/* --- CAMBIOS EN ESTA SECCIÓN --- */}
+          <AnimatedSection
+            animation="fadeInRight"
+            delay={400}
+            className="h-full"
+          >
+            <div className="overflow-hidden group hover:shadow-xl transition-all duration-500 h-full ">
+              <div className="relative h-[500px] lg:h-[650px]">
+                <CldVideoPlayer
+                  src="IMG_7842_wd6zmf"
+                  className="absolute w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  autoplay
+                  muted
+                  loop
+                  controls={false}
                 />
               </div>
             </div>
