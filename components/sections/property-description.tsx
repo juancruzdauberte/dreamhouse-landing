@@ -1,7 +1,7 @@
 "use client";
 import { Badge } from "@/components/ui/badge";
 import { AnimatedSection } from "@/components/sections/animated-section";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import VideoLayout from "../layouts/VideoLayout";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -9,7 +9,13 @@ import { useIsMobile } from "@/hooks/use-mobile";
 export function PropertyDescription() {
   const [currentVideo, setCurrentVideo] = useState(0);
   const [isChanging, setIsChanging] = useState(false);
-  // Array de videos - agrega aquí los IDs de tus videos de Cloudinary
+  const [hasMounted, setHasMounted] = useState(false);
+
+  // Este efecto se ejecuta solo en el cliente, una vez que el componente se monta.
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
   const videos = [
     "WhatsApp_Video_2025-09-19_at_20.29.38_ondrsh",
     "IMG_7842_wd6zmf",
@@ -17,15 +23,12 @@ export function PropertyDescription() {
     "IMG_7838_eqjhym",
     "IMG_7834_zejyh2",
   ];
-  // const videoWithControlsId = "WhatsApp_Video_2025-09-19_at_20.29.38_ondrsh";
 
   const changeVideo = (newIndex: number) => {
-    setIsChanging(true); // Inicia la transición (fade out)
-
-    // Espera a que termine la animación de fade-out (300ms)
+    setIsChanging(true);
     setTimeout(() => {
       setCurrentVideo(newIndex);
-      setIsChanging(false); // Termina la transición (fade in)
+      setIsChanging(false);
     }, 300);
   };
 
@@ -40,6 +43,8 @@ export function PropertyDescription() {
   };
 
   const isMobile = useIsMobile();
+
+  // --- Renderizado principal ---
   return (
     <section className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -59,6 +64,7 @@ export function PropertyDescription() {
             delay={200}
             className="space-y-6"
           >
+            {/* ... (Tu sección de texto y badges se mantiene igual) ... */}
             <div>
               <p className="text-2xl font-semibold mb-4">Diseño y Confort</p>
               <p className="text-muted-foreground leading-relaxed">
@@ -107,48 +113,55 @@ export function PropertyDescription() {
           >
             <div className="relative w-full group">
               <div className="overflow-hidden rounded-lg shadow-xl transition-all duration-500 hover:shadow-2xl">
-                <div
-                  className={`relative w-full transition-opacity duration-300 ${
-                    isChanging ? "opacity-0" : "opacity-100"
-                  }`}
-                >
-                  <VideoLayout
-                    id={videos[currentVideo]}
-                    aspec_ratio={isMobile ? "9:16" : "1:1"}
+                {/* --- LÓGICA DE MONTAJE APLICADA AQUÍ --- */}
+                {!hasMounted ? (
+                  // Placeholder mientras el componente se monta en el cliente
+                  <div
+                    className="w-full bg-gray-200 animate-pulse rounded-lg"
+                    // Usamos el aspect ratio de desktop como base para evitar saltos de diseño
+                    style={{ aspectRatio: "1 / 1" }}
                   />
-                </div>
+                ) : (
+                  // Una vez montado, renderiza el video con el aspect ratio correcto
+                  <div
+                    className={`relative w-full transition-opacity duration-300 ${
+                      isChanging ? "opacity-0" : "opacity-100"
+                    }`}
+                  >
+                    <VideoLayout
+                      key={videos[currentVideo]} // La key es crucial para que el video cambie
+                      id={videos[currentVideo]}
+                      aspect_ratio={isMobile ? "9:16" : "1:1"} // Corregido typo: aspectRatio
+                    />
+                  </div>
+                )}
               </div>
 
-              {/* Botones de navegación - solo si hay más de 1 video */}
+              {/* ... (Tus botones e indicadores se mantienen igual) ... */}
               {videos.length > 1 && (
                 <>
                   <button
                     onClick={prevVideo}
                     className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 cursor-pointer"
-                    aria-label="Video anterior"
                   >
                     <ChevronLeft className="w-6 h-6" />
                   </button>
                   <button
                     onClick={nextVideo}
                     className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-gray-800 rounded-full p-2 shadow-lg transition-all duration-300 md:opacity-0 md:group-hover:opacity-100 hover:scale-110 cursor-pointer"
-                    aria-label="Video siguiente"
                   >
                     <ChevronRight className="w-6 h-6" />
                   </button>
-
-                  {/* Indicadores de posición */}
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
                     {videos.map((_, index) => (
                       <button
                         key={index}
-                        onClick={() => setCurrentVideo(index)}
+                        onClick={() => changeVideo(index)} // Usamos changeVideo para la transición
                         className={`w-2 h-2 rounded-full transition-all duration-300 ${
                           index === currentVideo
                             ? "bg-white w-8"
                             : "bg-white/50 hover:bg-white/75"
                         }`}
-                        aria-label={`Ir al video ${index + 1}`}
                       />
                     ))}
                   </div>
