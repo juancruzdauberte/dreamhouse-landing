@@ -11,7 +11,7 @@ export default function CalendarDemo() {
     { from: new Date(2025, 8, 27), to: new Date(2025, 8, 27) },
     { from: new Date(2025, 9, 12), to: new Date(2025, 9, 13) },
     { from: new Date(2025, 10, 1), to: new Date(2025, 10, 1) },
-    { from: new Date(2025, 10, 6), to: new Date(2025, 10, 8) },
+    { from: new Date(2025, 10, 13), to: new Date(2025, 10, 15) },
     { from: new Date(2025, 10, 21), to: new Date(2025, 10, 23) },
     { from: new Date(2025, 11, 29), to: new Date(2026, 0, 1) },
   ];
