@@ -2,19 +2,15 @@
 
 import { Calendar } from "@/components/ui/calendar";
 import { es } from "date-fns/locale";
-import { DateRange } from "react-day-picker";
+import { useState } from "react";
+import { use } from "react";
+import { getReservas } from "@/lib/actions";
 
 export default function CalendarDemo() {
-  //Recordar que los meses estan con un numero menos. Ej: septiembre = 8
-  const datesNotAvailable: DateRange[] = [
-    { from: new Date(2025, 8, 20), to: new Date(2025, 8, 20) },
-    { from: new Date(2025, 8, 27), to: new Date(2025, 8, 27) },
-    { from: new Date(2025, 9, 12), to: new Date(2025, 9, 13) },
-    { from: new Date(2025, 10, 1), to: new Date(2025, 10, 1) },
-    { from: new Date(2025, 10, 13), to: new Date(2025, 10, 15) },
-    // { from: new Date(2025, 10, 21), to: new Date(2025, 10, 23) },
-    { from: new Date(2025, 11, 29), to: new Date(2026, 0, 1) },
-  ];
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch reservas desde la API con use()
+  const datesNotAvailable = use(getReservas());
 
   const isDateBooked = (date: Date) =>
     datesNotAvailable.some((range) => {
@@ -22,12 +18,20 @@ export default function CalendarDemo() {
       const to = range.to ?? range.from!;
       return date >= from && date <= to;
     });
+
   return (
     <section className="py-20 px-4 bg-muted/30">
       <div className="max-w-6xl mx-auto flex flex-col items-center text-center">
         <h4 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-5 md:mb-10">
           Calendario de disponibilidad
         </h4>
+
+        {error && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md">
+            {error}
+          </div>
+        )}
+
         <div className="flex flex-col md:flex-row w-full items-center md:items-start justify-center gap-5 lg:gap-20">
           <div className="bg-white p-2 rounded-md border">
             <p className="flex items-center gap-2">
