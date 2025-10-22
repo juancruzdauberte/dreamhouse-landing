@@ -2,15 +2,16 @@
 
 import { Calendar } from "@/components/ui/calendar";
 import { es } from "date-fns/locale";
-import { useState } from "react";
 import { use } from "react";
 import { getReservas } from "@/lib/actions";
 
-export default function CalendarDemo() {
-  const [error, setError] = useState<string | null>(null);
+const reservasPromise = getReservas();
 
-  // Fetch reservas desde la API con use()
-  const datesNotAvailable = use(getReservas());
+export default function CalendarDemo() {
+  // 3. Pasa la promesa (que ahora está guardada) al hook 'use'
+  //    Esto es seguro, porque 'reservasPromise' será el mismo objeto
+  //    en cada renderizado.
+  const datesNotAvailable = use(reservasPromise);
 
   const isDateBooked = (date: Date) =>
     datesNotAvailable.some((range) => {
@@ -26,11 +27,7 @@ export default function CalendarDemo() {
           Calendario de disponibilidad
         </h4>
 
-        {error && (
-          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md">
-            {error}
-          </div>
-        )}
+        {/* Recuerda que si 'use' falla, debes tener un error.tsx */}
 
         <div className="flex flex-col md:flex-row w-full items-center md:items-start justify-center gap-5 lg:gap-20">
           <div className="bg-white p-2 rounded-md border">
@@ -59,26 +56,40 @@ export default function CalendarDemo() {
         </div>
       </div>
 
-      {/* estilos extras */}
       <style jsx global>{`
         .day-booked::after {
           content: "";
+
           display: block;
+
           width: 6px;
+
           height: 6px;
+
           border-radius: 50%;
+
           background-color: red;
+
           margin: 0 auto;
+
           margin-top: 2px;
         }
+
         .day-available::after {
           content: "";
+
           display: block;
+
           width: 6px;
+
           height: 6px;
+
           border-radius: 50%;
+
           background-color: green;
+
           margin: 0 auto;
+
           margin-top: 2px;
         }
       `}</style>
