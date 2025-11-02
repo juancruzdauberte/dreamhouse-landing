@@ -24,6 +24,11 @@ export function FAQSection() {
         "Para reservar en Dreamhouse Baradero debes contactarte con nosotros. Se reserva abonando el 30% de la estadía.",
     },
     {
+      question: "¿Solo se puede abonar en dolares?",
+      answer:
+        "No, se puede abonar en dolares o pesos al tipo de cambio del dolar blue.",
+    },
+    {
       question: "¿Qué incluye el alquiler?",
       answer:
         "El alquiler incluye acceso completo a la propiedad, WiFi gratuito, uso de la piscina, parrilla, cocina totalmente equipada, ropa de cama, aire acondicionado, Smart TV con Netflix y estacionamiento. Lo que no ofrecemos son toallas.",
@@ -41,11 +46,6 @@ export function FAQSection() {
       question: "¿Qué actividades hay cerca de la propiedad?",
       answer:
         "Baradero ofrece navegación por el río Baradero y Paraná, visitas a estancias históricas, pesca deportiva, vistas extraordinarias, espacios verdes, restaurantes históricos.",
-    },
-    {
-      question: "¿Cómo llegar desde Capital Federal?",
-      answer:
-        "Baradero está a 130km de Buenos Aires (2 horas en auto por Ruta 9).",
     },
   ];
 
