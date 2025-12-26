@@ -26,6 +26,9 @@ export default function CalendarDemo() {
         <h4 className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-5 md:mb-10">
           Calendario de disponibilidad
         </h4>
+        <p className="text-muted-foreground text-center mb-8 text-lg">
+          El calendario muestra la disponibilidad de las noches.
+        </p>
 
         {/* Recuerda que si 'use' falla, debes tener un error.tsx */}
 

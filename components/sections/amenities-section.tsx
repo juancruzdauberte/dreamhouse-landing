@@ -41,7 +41,7 @@ export function AmenitiesSection() {
     {
       icon: <Wind className="h-8 w-8" />,
       title: "Aire Acondicionado",
-      description: "Climatización en planta alta y baja",
+      description: "Climatización en los 3 dormitorios y planta baja",
     },
     {
       icon: <Tv className="h-8 w-8" />,

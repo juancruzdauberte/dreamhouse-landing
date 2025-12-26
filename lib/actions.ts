@@ -2,7 +2,9 @@ import { DateRange } from "react-day-picker";
 
 export async function getReservas(): Promise<DateRange[]> {
   try {
-    const response = await fetch("/api/reservas"); // Asume que la API ya devuelve 'YYYY-MM-DD'
+    const protocol = process.env.NODE_ENV === "production" ? "https" : "http";
+    const host = process.env.NEXT_PUBLIC_URL || "localhost:3000";
+    const response = await fetch(`${protocol}://${host}/api/reservas`); // Asume que la API ya devuelve 'YYYY-MM-DD'
 
     if (!response.ok) {
       throw new Error("Error de red al obtener reservas");
