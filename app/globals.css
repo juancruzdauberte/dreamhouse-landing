@@ -137,3 +137,52 @@ html {
 .text-pretty {
   text-wrap: pretty;
 }
+
+/* Custom styles for react-phone-number-input to match Shadcn UI */
+.PhoneInput {
+  display: flex;
+  align-items: center;
+}
+
+.PhoneInputCountry {
+  margin-right: 0.5rem;
+}
+
+.PhoneInputCountryIcon {
+  width: 1.5rem;
+  height: 1rem;
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.PhoneInputCountrySelect {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  border: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.PhoneInputInput {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  font-size: 0.875rem; /* text-sm */
+  outline: none;
+}
+
+.PhoneInputInput::placeholder {
+  color: var(--muted-foreground);
+}
+
+/* Hide default arrow if we want cleaner look */
+.PhoneInputCountrySelectArrow {
+  display: none;
+}

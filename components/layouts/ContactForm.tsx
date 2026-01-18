@@ -10,6 +10,10 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Loader2, Send, CheckCircle, Mail } from "lucide-react";
 import { AnimatedSection } from "@/components/sections/animated-section";
 
+import PhoneInput from "react-phone-number-input";
+import es from "react-phone-number-input/locale/es";
+import "react-phone-number-input/style.css";
+
 export function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -55,6 +59,13 @@ export function ContactForm() {
     setFormData((prev) => ({
       ...prev,
       [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handlePhoneChange = (value: string | undefined) => {
+    setFormData((prev) => ({
+      ...prev,
+      phone: value || "",
     }));
   };
 
@@ -113,14 +124,13 @@ export function ContactForm() {
                 <label htmlFor="phone" className="text-sm font-medium">
                   Teléfono
                 </label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
+                <PhoneInput
+                  placeholder="Ingresá tu teléfono"
+                  defaultCountry="AR"
+                  labels={es}
                   value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+543329305210"
-                  className="transition-all duration-300 focus:scale-[1.02]"
+                  onChange={handlePhoneChange}
+                  className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-within:outline-none focus-within:ring-2 focus-within:ring-ring focus-within:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-300 focus-within:scale-[1.02]"
                 />
               </div>
             </div>
