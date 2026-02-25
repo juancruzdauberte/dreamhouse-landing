@@ -30,6 +30,71 @@ const allImages: GalleryImage[] = [
     category: ["Cocina"],
     span: "wide",
   },
+
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047428/dh-sala-estar_vi66ak.jpg",
+    alt: "Sala de estar",
+    category: ["Living-Comedor"],
+    span: "wide",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047427/dh-terraza_dbcnsr.jpg",
+    alt: "Terraza",
+    category: ["Patio"],
+    span: "normal",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047428/dh-patio-mesa-plas_vjtb0p.jpg",
+    alt: "Patio equipado",
+    category: ["Patio"],
+    span: "normal",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047428/dh-cocina_ewcmel.jpg",
+    alt: "Cocina equipada",
+    category: ["Cocina"],
+    span: "wide",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047428/dh-patio-mesa-piedra_f7fdcy.jpg",
+    alt: "Patio equipado",
+    category: ["Patio"],
+    span: "normal",
+  },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047427/dh-dorm-3_tif1bv.jpg",
+    alt: "Dormitorio 3",
+    category: ["Dormitorios"],
+    span: "wide",
+  },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047427/dh-dorm-2_hbwbqa.jpg",
+    alt: "Dormitorio 2",
+    category: ["Dormitorios"],
+    span: "wide",
+  },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047427/dh-banio-ab_zi2kqr.jpg",
+    alt: "Baño planta baja",
+    category: ["Baños"],
+    span: "normal",
+  },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047427/dh-banio-arr_qpoe5w.jpg",
+    alt: "Baño planta alta",
+    category: ["Baños"],
+    span: "wide",
+  },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047426/dh-ante-banio_mqistx.jpg",
+    alt: "Ante baño planta alta",
+    category: ["Baños"],
+    span: "normal",
+  },
   // Living
   {
     src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318377/WhatsApp_Image_2025-09-08_at_22.06.14_1_uksjyk.jpg",
@@ -50,24 +115,24 @@ const allImages: GalleryImage[] = [
     category: ["Garage"],
     span: "normal",
   },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047427/dh-coch-1_fvxm5n.jpg",
+    alt: "Garage",
+    category: ["Garage"],
+    span: "normal",
+  },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772047427/dh-coch-2_pfga9n.jpg",
+    alt: "Garage",
+    category: ["Garage"],
+    span: "normal",
+  },
   // Dormitorios
   {
     src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318382/WhatsApp_Image_2025-09-08_at_22.06.12_3_n7synm.jpg",
-    alt: "Dormitorio principal",
+    alt: "Dormitorio 1",
     category: ["Dormitorios"],
     span: "wide",
-  },
-  {
-    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318385/WhatsApp_Image_2025-09-08_at_22.06.13_2_qcroog.jpg",
-    alt: "Dormitorio 2",
-    category: ["Dormitorios"],
-    span: "normal",
-  },
-  {
-    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318385/WhatsApp_Image_2025-09-08_at_22.06.13_g5uxgr.jpg",
-    alt: "Dormitorio 3",
-    category: ["Dormitorios"],
-    span: "normal",
   },
   // Patio
   {
