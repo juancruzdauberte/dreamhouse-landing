@@ -1,160 +1,299 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight, Play } from "lucide-react";
+import { createPortal } from "react-dom";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 import { AnimatedSection } from "@/components/sections/animated-section";
 import Image from "next/image";
 
+type Category =
+  | "Todos"
+  | "Cocina"
+  | "Living-Comedor"
+  | "Baños"
+  | "Dormitorios"
+  | "Patio"
+  | "Garage";
+
+interface GalleryImage {
+  src: string;
+  alt: string;
+  category: Exclude<Category, "Todos">[];
+  span?: "wide" | "tall" | "normal";
+}
+
+const allImages: GalleryImage[] = [
+  // Cocina
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758324359/cocina_liqdn8.jpg",
+    alt: "Cocina moderna equipada",
+    category: ["Cocina"],
+    span: "wide",
+  },
+  // Living
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318377/WhatsApp_Image_2025-09-08_at_22.06.14_1_uksjyk.jpg",
+    alt: "Sala de estar luminosa",
+    category: ["Living-Comedor"],
+    span: "wide",
+  },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318378/WhatsApp_Image_2025-09-08_at_22.06.14_s49kqx.jpg",
+    alt: "Living comedor integrado",
+    category: ["Living-Comedor"],
+    span: "normal",
+  },
+  // Baños
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318385/WhatsApp_Image_2025-09-08_at_22.06.10_ji1e9i.jpg",
+    alt: "Garage",
+    category: ["Garage"],
+    span: "normal",
+  },
+  // Dormitorios
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318382/WhatsApp_Image_2025-09-08_at_22.06.12_3_n7synm.jpg",
+    alt: "Dormitorio principal",
+    category: ["Dormitorios"],
+    span: "wide",
+  },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318385/WhatsApp_Image_2025-09-08_at_22.06.13_2_qcroog.jpg",
+    alt: "Dormitorio 2",
+    category: ["Dormitorios"],
+    span: "normal",
+  },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318385/WhatsApp_Image_2025-09-08_at_22.06.13_g5uxgr.jpg",
+    alt: "Dormitorio 3",
+    category: ["Dormitorios"],
+    span: "normal",
+  },
+  // Patio
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772026667/dh-patio_ubqhwr.jpg",
+    alt: "Patio con piscina",
+    category: ["Patio"],
+    span: "wide",
+  },
+
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318378/WhatsApp_Image_2025-09-08_at_22.06.14_s49kqx.jpg",
+    alt: "Galería del patio - parrilla",
+    category: ["Patio"],
+    span: "normal",
+  },
+];
+
+const CATEGORIES: Category[] = [
+  "Todos",
+  "Cocina",
+  "Living-Comedor",
+  "Baños",
+  "Dormitorios",
+  "Patio",
+  "Garage",
+];
+
 export function GallerySection() {
-  const [currentImage, setCurrentImage] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<Category>("Todos");
+  const [lightbox, setLightbox] = useState<number | null>(null);
 
-  const images = [
-    {
-      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772026667/dh-patio_ubqhwr.jpg",
-      alt: "Exterior con piscina",
-    },
-    {
-      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318377/WhatsApp_Image_2025-09-08_at_22.06.14_1_uksjyk.jpg",
-      alt: "Sala de estar",
-    },
-    {
-      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318382/WhatsApp_Image_2025-09-08_at_22.06.12_3_n7synm.jpg",
-      alt: "Dormitorio principal",
-    },
-    {
-      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758324359/cocina_liqdn8.jpg",
-      alt: "Cocina moderna",
-    },
-    {
-      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318378/WhatsApp_Image_2025-09-08_at_22.06.14_s49kqx.jpg",
-      alt: "Área de parrilla",
-    },
-    {
-      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318385/WhatsApp_Image_2025-09-08_at_22.06.10_ji1e9i.jpg",
-      alt: "Cochera",
-    },
-  ];
+  const filtered =
+    activeCategory === "Todos"
+      ? allImages
+      : allImages.filter((img) => img.category.includes(activeCategory));
 
-  const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % images.length);
-  };
-
-  const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
-  };
+  const openLightbox = (index: number) => setLightbox(index);
+  const closeLightbox = () => setLightbox(null);
+  const prevLightbox = () =>
+    setLightbox((prev) =>
+      prev !== null ? (prev - 1 + filtered.length) % filtered.length : null,
+    );
+  const nextLightbox = () =>
+    setLightbox((prev) =>
+      prev !== null ? (prev + 1) % filtered.length : null,
+    );
 
   return (
-    <section id="galeria" className="py-20 px-4 bg-muted/30">
-      <div className="max-w-6xl mx-auto overflow-x-hidden">
-        <AnimatedSection animation="fadeInUp" className="text-center mb-16">
-          <p className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6">
-            Galería
-          </p>
-          <p className="text-xl text-muted-foreground">
-            Descubrí cada rincón de tu próximo hogar temporal
-          </p>
-        </AnimatedSection>
+    <>
+      <section id="galeria" className="py-20 px-4 bg-muted/30">
+        <div className="max-w-6xl mx-auto">
+          {/* Header */}
+          <AnimatedSection animation="fadeInUp" className="text-center mb-12">
+            <p className="font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-4">
+              Galería
+            </p>
+            <p className="text-xl text-muted-foreground">
+              Descubrí cada rincón de tu próximo hogar temporal
+            </p>
+          </AnimatedSection>
 
-        <div className="grid lg:grid-cols-3 gap-8">
-          {/* Main Image */}
-          <AnimatedSection
-            animation="fadeInLeft"
-            delay={200}
-            className="lg:col-span-2"
-          >
-            <div className="overflow-hidden group">
-              <div className="relative">
-                <Image
-                  src={images[currentImage].src || "/placeholder.svg"}
-                  alt={images[currentImage].alt}
-                  height={600}
-                  width={1920}
-                  className="w-full h-[600px] object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-
-                {/* Navigation Buttons */}
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white hover:scale-110 transition-all duration-200 cursor-pointer"
-                  onClick={prevImage}
+          {/* Category Filter Pills */}
+          <AnimatedSection animation="fadeInUp" delay={150} className="mb-10">
+            <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+              {CATEGORIES.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setActiveCategory(cat)}
+                  className={`
+                    px-4 py-2 rounded-full text-sm font-medium
+                    border transition-all duration-300
+                    ${
+                      activeCategory === cat
+                        ? "bg-primary text-primary-foreground border-primary shadow-md scale-105"
+                        : "bg-background text-muted-foreground border-border hover:border-primary/50 hover:text-foreground hover:scale-105"
+                    }
+                  `}
                 >
-                  <ChevronLeft className="h-4 w-4" />
-                </Button>
-
-                <Button
-                  variant="outline"
-                  size="icon"
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 hover:bg-white hover:scale-110 transition-all duration-200 cursor-pointer"
-                  onClick={nextImage}
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </Button>
-
-                {/* Image Counter */}
-                <div className="absolute bottom-4 left-4 bg-black/70 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
-                  {currentImage + 1} / {images.length}
-                </div>
-              </div>
+                  {cat}
+                </button>
+              ))}
             </div>
           </AnimatedSection>
 
-          {/* Thumbnail Grid */}
-          <AnimatedSection
-            animation="fadeInRight"
-            delay={400}
-            className="space-y-4"
-          >
-            <div className="grid grid-cols-2 gap-4 overflow-hidden p-2">
-              {images.slice(0, 7).map((image, index) => (
+          {/* Masonry-style Grid */}
+          <AnimatedSection animation="fadeInUp" delay={300}>
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-0">
+              {filtered.map((image, index) => (
                 <div
-                  key={index}
-                  className={`overflow-hidden cursor-pointer transition-all duration-300 hover:shadow-lg ${
-                    currentImage === index
-                      ? "ring-2 ring-primary ring-offset-2 ring-offset-background scale-105 shadow-lg"
-                      : "hover:scale-105 hover:shadow-md border-2 border-transparent hover:border-primary/20"
-                  }`}
-                  onClick={() => setCurrentImage(index)}
+                  key={`${image.src}-${index}`}
+                  className="break-inside-avoid mb-4 group relative overflow-hidden rounded-xl cursor-pointer shadow-md hover:shadow-xl transition-all duration-300"
+                  onClick={() => openLightbox(index)}
                 >
                   <div className="relative">
                     <Image
                       src={image.src}
                       alt={image.alt}
-                      width={400}
-                      height={160}
-                      className="w-full h-40 md:h-24 object-cover transition-transform duration-300"
+                      width={800}
+                      height={600}
+                      className={`w-full object-cover transition-transform duration-500 group-hover:scale-105 ${
+                        image.span === "wide" ? "h-72" : "h-64"
+                      }`}
                     />
+                    {/* Overlay on hover */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all duration-300 flex items-center justify-center">
+                      <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-all duration-300 h-8 w-8 drop-shadow-lg" />
+                    </div>
+                    {/* Category Badge */}
+                    <div className="absolute top-3 left-3 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                      <span className="bg-primary/90 text-primary-foreground text-xs font-semibold px-3 py-1 rounded-full backdrop-blur-sm">
+                        {image.category}
+                      </span>
+                    </div>
+                    {/* Alt text bottom */}
+                    <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                      <p className="text-white text-sm font-medium">
+                        {image.alt}
+                      </p>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
 
-            {/* Video Tour Card */}
-            {/* <Card className="overflow-hidden cursor-pointer hover:scale-105 transition-all duration-300 hover:shadow-xl group">
-              <CardContent className="p-0 relative">
-                <video
-                  src="https://player.cloudinary.com/embed/?cloud_name=dttpgbmdx&public_id=WhatsApp_Video_2025-09-19_at_20.29.38_zphtuf&profile=cld-default"
-                  className="w-full h-32 object-cover transition-transform duration-500 group-hover:scale-110"
-                  muted
-                  loop
-                  playsInline
-                  onMouseEnter={(e) => e.currentTarget.play()}
-                  onMouseLeave={(e) => e.currentTarget.pause()}
-                />
-                <div className="absolute inset-0 bg-black/40 flex items-center justify-center transition-all duration-300 group-hover:bg-black/30">
-                  <div className="bg-white rounded-full p-3 transition-all duration-300 group-hover:scale-110 group-hover:bg-primary group-hover:text-white">
-                    <Play className="h-6 w-6 ml-1" />
-                  </div>
-                </div>
-                <div className="absolute bottom-2 left-2 text-white text-sm font-medium">
-                  Tour Virtual
-                </div>
-              </CardContent>
-            </Card> */}
+            {filtered.length === 0 && (
+              <div className="text-center py-16 text-muted-foreground">
+                No hay imágenes para esta categoría.
+              </div>
+            )}
           </AnimatedSection>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Lightbox via Portal — escapa transforms de ancestros */}
+      {lightbox !== null &&
+        typeof document !== "undefined" &&
+        createPortal(
+          <div
+            className="fixed inset-0 z-[9999] bg-black flex flex-col"
+            onClick={closeLightbox}
+          >
+            {/* Top bar */}
+            <div className="flex items-center justify-between px-4 py-3 flex-shrink-0">
+              <span className="text-white/60 text-sm font-medium tabular-nums">
+                {lightbox + 1} / {filtered.length}
+              </span>
+              <button
+                className="text-white/80 hover:text-white p-2 rounded-full hover:bg-white/10 active:bg-white/20 transition-colors"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  closeLightbox();
+                }}
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+
+            {/* Image — ocupa todo el espacio restante */}
+            <div
+              className="flex flex-1 items-center justify-center overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Desktop prev */}
+              <button
+                className="hidden md:flex flex-shrink-0 text-white/70 hover:text-white p-3 rounded-full hover:bg-white/10 transition-colors mx-2"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevLightbox();
+                }}
+              >
+                <ChevronLeft className="h-8 w-8" />
+              </button>
+
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={filtered[lightbox].src}
+                alt={filtered[lightbox].alt}
+                className="max-w-full max-h-full object-contain select-none"
+                style={{ maxHeight: "calc(100dvh - 120px)" }}
+                draggable={false}
+              />
+
+              {/* Desktop next */}
+              <button
+                className="hidden md:flex flex-shrink-0 text-white/70 hover:text-white p-3 rounded-full hover:bg-white/10 transition-colors mx-2"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextLightbox();
+                }}
+              >
+                <ChevronRight className="h-8 w-8" />
+              </button>
+            </div>
+
+            {/* Bottom bar: caption + mobile arrows */}
+            <div
+              className="flex items-center justify-between px-4 py-3 flex-shrink-0 gap-2"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                className="md:hidden text-white/70 hover:text-white p-3 rounded-full hover:bg-white/10 active:bg-white/20 transition-colors flex-shrink-0"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevLightbox();
+                }}
+              >
+                <ChevronLeft className="h-7 w-7" />
+              </button>
+
+              <p className="text-white/60 text-sm text-center flex-1 line-clamp-1">
+                {filtered[lightbox].alt}
+              </p>
+
+              <button
+                className="md:hidden text-white/70 hover:text-white p-3 rounded-full hover:bg-white/10 active:bg-white/20 transition-colors flex-shrink-0"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextLightbox();
+                }}
+              >
+                <ChevronRight className="h-7 w-7" />
+              </button>
+            </div>
+          </div>,
+          document.body,
+        )}
+    </>
   );
 }

@@ -18,10 +18,13 @@ export function PropertyDescription() {
 
   const videos = [
     "WhatsApp_Video_2025-09-19_at_20.29.38_ondrsh",
+    "dh-video-patio-del_p4a7ti",
+    "dh-video-patio-tras_wxwldq",
     "IMG_7842_wd6zmf",
     "IMG_7613_o8ywoa",
     "IMG_7838_eqjhym",
     "IMG_7834_zejyh2",
+    "dh-living-noche_hz0esz",
   ];
 
   const changeVideo = (newIndex: number) => {
@@ -127,6 +130,7 @@ export function PropertyDescription() {
                     className={`relative w-full transition-opacity duration-300 ${
                       isChanging ? "opacity-0" : "opacity-100"
                     }`}
+                    style={{ aspectRatio: isMobile ? "9/16" : "1/1" }}
                   >
                     <VideoLayout
                       key={videos[currentVideo]} // La key es crucial para que el video cambie
