@@ -11,12 +11,8 @@ export function GallerySection() {
 
   const images = [
     {
-      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318383/WhatsApp_Image_2025-09-08_at_22.06.11_2_xmyrtr.jpg",
+      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772026667/dh-patio_ubqhwr.jpg",
       alt: "Exterior con piscina",
-    },
-    {
-      src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758394502/WhatsApp_Image_2025-09-20_at_15.52.10_1_vzy2pj.jpg",
-      alt: "Sector de piscina",
     },
     {
       src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318377/WhatsApp_Image_2025-09-08_at_22.06.14_1_uksjyk.jpg",

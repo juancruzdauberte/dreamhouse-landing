@@ -59,7 +59,7 @@ export const metadata: Metadata = {
       "Casa quinta de lujo para alquiler vacacional en Baradero, Buenos Aires, Argentina.",
     images: [
       {
-        url: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318383/WhatsApp_Image_2025-09-08_at_22.06.11_2_xmyrtr.jpg",
+        url: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772026667/dh-patio_ubqhwr.jpg",
         width: 1200,
         height: 630,
         alt: "Dreamhouse Baradero - Casa de Alquiler Vacacional",
@@ -84,7 +84,7 @@ export const metadata: Metadata = {
     description:
       "Casa quinta de lujo para alquiler vacacional en Baradero, Buenos Aires, Argentina.",
     images: [
-      "https://res.cloudinary.com/dttpgbmdx/image/upload/v1758318385/WhatsApp_Image_2025-09-08_at_22.06.13_1_zi0lt9.jpg",
+      "https://res.cloudinary.com/dttpgbmdx/image/upload/v1772026667/dh-patio_ubqhwr.jpg",
     ],
   },
   alternates: {

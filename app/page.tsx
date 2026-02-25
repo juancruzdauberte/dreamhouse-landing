@@ -8,14 +8,14 @@ import { CTASection } from "@/components/sections/cta-section";
 import { Footer } from "@/components/layouts/footer";
 import { FloatingNavbar } from "@/components/layouts/floating-navbar";
 import { AnimatedSection } from "@/components/sections/animated-section";
-import { WhatsAppFloat } from "@/components/widgets/whatsapp-float";
+import { FloatButtons } from "@/components/widgets/float-buttons";
 import AvailabilitySection from "@/components/sections/availability-section";
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <FloatingNavbar />
-      <WhatsAppFloat />
+      <FloatButtons />
       <div id="hero">
         <HeroSection />
       </div>
