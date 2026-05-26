@@ -36,12 +36,13 @@ export function Footer() {
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/dreamhouse_baradero"
+                target="_blank"
                 className="text-muted-foreground hover:text-primary transition-all duration-200"
               >
                 <Instagram
                   className="h-5 w-5"
-                  href="https://www.instagram.com/dream_house367/"
+                  href="https://www.instagram.com/dreamhouse_baradero"
                   target="_blank"
                 />
               </a>
