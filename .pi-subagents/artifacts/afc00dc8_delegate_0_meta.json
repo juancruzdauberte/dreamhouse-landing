@@ -1,0 +1,37 @@
+{
+  "runId": "afc00dc8",
+  "agent": "delegate",
+  "task": "Write a delta spec artifact and save it to openspec/changes/policies-section/spec.md in /mnt/c/Users/juanc/Desktop/dreamhouse/landing.\n\n## Context\nProject: dreamhouse-landing — vacation rental landing page (Next.js 14, TypeScript, Tailwind v4, shadcn/ui, lucide-react).\n\n## Change: policies-section\n\n### Component: PoliciesSection\n- File: `components/sections/policies-section.tsx`\n- Export: `export function PoliciesSection()`\n- No props (self-contained, data is static)\n- \"use client\" directive required\n- Uses shadcn/ui Accordion (AccordionItem/AccordionTrigger/AccordionContent from @/components/ui/accordion)\n- Uses AnimatedSection from @/components/sections/animated-section\n- Uses lucide-react icons: CreditCard, CalendarX, PawPrint, Clock\n- Background: `bg-muted/30`\n- Container: `max-w-4xl mx-auto`\n- Heading: `font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6`\n- Section id: `id=\"politicas\"` (on the wrapper div in page.tsx, not in the component itself)\n\n### 4 policies (static data)\n```\n[\n  { icon: CreditCard, title: \"Reserva con Seña\", body: \"La reserva se confirma abonando el 30% de la estadía.\" },\n  { icon: CalendarX, title: \"Sin Reembolso\", body: \"Una vez señada la reserva no se realiza reembolso. La fecha puede reprogramarse; el precio puede variar según la fecha elegida.\" },\n  { icon: PawPrint, title: \"Mascotas Bienvenidas\", body: \"Aceptamos todo tipo de mascotas, sin límite de cantidad.\" },\n  { icon: Clock, title: \"Check-in / Check-out\", body: \"Check-in: 12:00 hs. Check-out: 10:00 hs. Late check-out disponible con costo adicional, consultanos.\" }\n]\n```\n\n### Integration: app/page.tsx\n- Add import: `import { PoliciesSection } from \"@/components/sections/policies-section\";`\n- Insert after `<div id=\"disponibilidad\">` block, before `<AnimatedSection ...><FAQSection /></AnimatedSection>`\n- Wrapper: `<AnimatedSection animation=\"fadeInUp\" delay={200}><div id=\"politicas\"><PoliciesSection /></div></AnimatedSection>`\n\n### Integration: floating-navbar.tsx\n- Add to navItems array: `{ label: \"Políticas\", id: \"politicas\" }` after the \"Disponibilidad\" entry (index 3 → new index 4)\n\n### Acceptance scenarios\n\n**SC-01: Section renders with heading**\nGiven the page loads, the PoliciesSection is present with heading \"Políticas\" using Playfair Display font and subtitle \"Todo lo que necesitás saber antes de reservar\".\n\n**SC-02: All 4 policies are rendered as accordion items**\nGiven the section renders, 4 AccordionItems are present. Each has a trigger showing the policy title. Content is collapsed by default.\n\n**SC-03: Accordion expand/collapse**\nGiven a user clicks an AccordionTrigger, the AccordionContent expands showing the policy body text. Clicking again collapses it. Only one item is open at a time (type=\"single\").\n\n**SC-04: Icons present**\nEach accordion item trigger shows a lucide-react icon (h-6 w-6, text-primary color) alongside the title.\n\n**SC-05: Nav link present and functional**\nThe floating navbar contains a \"Políticas\" button. Clicking it calls scrollToSection(\"politicas\") which scrolls to id=\"politicas\".\n\n**SC-06: Visual consistency**\nSection background is bg-muted/30. Section spacing is py-20 px-4. Cards/items use bg-white, rounded-lg, border, hover:shadow-md, hover:border-primary/20 consistent with FAQSection.\n\n**SC-07: Mobile responsive**\nOn mobile (< md breakpoint), the section renders full-width single column. Nav item appears in the mobile dropdown menu.\n\n**SC-08: No TypeScript errors**\ntsc --noEmit passes with no new errors.\n\n### Non-functional requirements\n- Accessible: accordion uses radix-ui (keyboard navigable, aria attributes built-in)\n- No new dependencies required (all imports already in project)\n- No backend/API calls\n- Static data only\n\n---\n\nWrite the spec as structured markdown. Save to:\n/mnt/c/Users/juanc/Desktop/dreamhouse/landing/openspec/changes/policies-section/spec.md\n\nFormat:\n# Spec — policies-section\n## Component Interface\n## Static Data\n## Integration Spec\n### page.tsx\n### floating-navbar.tsx\n## Acceptance Scenarios\n## Non-functional Requirements\n## Constraints",
+  "exitCode": 0,
+  "usage": {
+    "input": 8,
+    "output": 3327,
+    "cacheRead": 59657,
+    "cacheWrite": 4961,
+    "cost": 0.08642985,
+    "turns": 6
+  },
+  "model": "amazon-bedrock/us.anthropic.claude-sonnet-4-6",
+  "attemptedModels": [
+    "amazon-bedrock/us.anthropic.claude-sonnet-4-6"
+  ],
+  "modelAttempts": [
+    {
+      "model": "amazon-bedrock/us.anthropic.claude-sonnet-4-6",
+      "success": true,
+      "exitCode": 0,
+      "usage": {
+        "input": 8,
+        "output": 3327,
+        "cacheRead": 59657,
+        "cacheWrite": 4961,
+        "cost": 0.08642985,
+        "turns": 6
+      }
+    }
+  ],
+  "durationMs": 86840,
+  "toolCount": 5,
+  "transcriptPath": "/mnt/c/Users/juanc/Desktop/dreamhouse/landing/.pi-subagents/artifacts/afc00dc8_delegate_0_transcript.jsonl",
+  "timestamp": 1783713358792
+}

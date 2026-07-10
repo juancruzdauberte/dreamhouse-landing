@@ -1,0 +1,37 @@
+{
+  "runId": "20efe16c",
+  "agent": "delegate",
+  "task": "Write a technical design artifact to openspec/changes/policies-section/design.md in /mnt/c/Users/juanc/Desktop/dreamhouse/landing.\n\nThe design must contain the EXACT, COMPLETE code ready for implementation — not pseudocode.\n\n---\n\n## 1. Complete file: components/sections/policies-section.tsx\n\n```tsx\n\"use client\";\n\nimport {\n  Accordion,\n  AccordionContent,\n  AccordionItem,\n  AccordionTrigger,\n} from \"@/components/ui/accordion\";\nimport { AnimatedSection } from \"@/components/sections/animated-section\";\nimport { CreditCard, CalendarX, PawPrint, Clock } from \"lucide-react\";\n\nconst policies = [\n  {\n    icon: CreditCard,\n    title: \"Reserva con Seña\",\n    body: \"La reserva se confirma abonando el 30% de la estadía.\",\n  },\n  {\n    icon: CalendarX,\n    title: \"Sin Reembolso\",\n    body: \"Una vez señada la reserva no se realiza reembolso. La fecha puede reprogramarse; el precio puede variar según la fecha elegida.\",\n  },\n  {\n    icon: PawPrint,\n    title: \"Mascotas Bienvenidas\",\n    body: \"Aceptamos todo tipo de mascotas, sin límite de cantidad.\",\n  },\n  {\n    icon: Clock,\n    title: \"Check-in / Check-out\",\n    body: \"Check-in: 12:00 hs. Check-out: 10:00 hs. Late check-out disponible con costo adicional, consultanos.\",\n  },\n];\n\nexport function PoliciesSection() {\n  return (\n    <section className=\"py-20 px-4 bg-muted/30\">\n      <div className=\"max-w-4xl mx-auto\">\n        <AnimatedSection animation=\"fadeInUp\" className=\"text-center mb-16\">\n          <h2 className=\"font-[family-name:var(--font-playfair)] text-4xl md:text-5xl font-bold mb-6\">\n            Políticas\n          </h2>\n          <p className=\"text-xl text-muted-foreground\">\n            Todo lo que necesitás saber antes de reservar\n          </p>\n        </AnimatedSection>\n\n        <Accordion type=\"single\" collapsible className=\"space-y-4\">\n          {policies.map((policy, index) => {\n            const Icon = policy.icon;\n            return (\n              <AnimatedSection key={policy.title} animation=\"fadeInUp\" delay={index * 100}>\n                <AccordionItem\n                  value={policy.title}\n                  className=\"bg-white rounded-lg px-6 hover:shadow-md transition-all duration-300 hover:scale-[1.02] border border-transparent hover:border-primary/20\"\n                >\n                  <AccordionTrigger className=\"cursor-pointer text-left hover:no-underline py-6\">\n                    <div className=\"flex items-center gap-3\">\n                      <Icon className=\"h-6 w-6 text-primary shrink-0\" />\n                      <span className=\"font-semibold\">{policy.title}</span>\n                    </div>\n                  </AccordionTrigger>\n                  <AccordionContent className=\"pb-6 text-muted-foreground leading-relaxed\">\n                    {policy.body}\n                  </AccordionContent>\n                </AccordionItem>\n              </AnimatedSection>\n            );\n          })}\n        </Accordion>\n      </div>\n    </section>\n  );\n}\n```\n\n## 2. Diff for app/page.tsx\n\nAdd import (alongside other section imports at top):\n```\nimport { PoliciesSection } from \"@/components/sections/policies-section\";\n```\n\nInsert JSX after the `<div id=\"disponibilidad\">` block and before the FAQSection line:\n```tsx\n<AnimatedSection animation=\"fadeInUp\" delay={200}>\n  <div id=\"politicas\">\n    <PoliciesSection />\n  </div>\n</AnimatedSection>\n```\n\nThe current FAQSection block is:\n```tsx\n<AnimatedSection animation=\"fadeInUp\" delay={300}>\n  <FAQSection />\n</AnimatedSection>\n```\n\nThe new block goes BEFORE this line.\n\n## 3. Diff for components/layouts/floating-navbar.tsx\n\nCurrent navItems:\n```ts\nconst navItems = [\n  { label: \"Inicio\", id: \"hero\" },\n  { label: \"Galería\", id: \"galeria\" },\n  { label: \"Servicios\", id: \"servicios\" },\n  { label: \"Disponibilidad\", id: \"disponibilidad\" },\n  { label: \"Ubicación\", id: \"ubicacion\" },\n  { label: \"Contacto\", id: \"reservar\" },\n];\n```\n\nNew navItems (add \"Políticas\" at index 4, after \"Disponibilidad\"):\n```ts\nconst navItems = [\n  { label: \"Inicio\", id: \"hero\" },\n  { label: \"Galería\", id: \"galeria\" },\n  { label: \"Servicios\", id: \"servicios\" },\n  { label: \"Disponibilidad\", id: \"disponibilidad\" },\n  { label: \"Políticas\", id: \"politicas\" },\n  { label: \"Ubicación\", id: \"ubicacion\" },\n  { label: \"Contacto\", id: \"reservar\" },\n];\n```\n\n## 4. Implementation notes\n- `icon` in the policies array is stored as a component reference (capitalized `Icon`), not as JSX — this avoids the React element-in-array type issue\n- `AnimatedSection` wraps each `AccordionItem` individually (consistent with faq-section.tsx pattern)\n- The section `id=\"politicas\"` is on the wrapper `<div>` in page.tsx, NOT inside PoliciesSection\n- Accordion uses shadcn/ui which is already installed (@radix-ui/react-accordion: 1.2.2)\n- No new dependencies needed\n\n---\n\nWrite the design document to:\n/mnt/c/Users/juanc/Desktop/dreamhouse/landing/openspec/changes/policies-section/design.md\n\nFormat:\n# Design — policies-section\n## policies-section.tsx (complete file)\n## app/page.tsx (diff)\n## floating-navbar.tsx (diff)\n## Implementation Notes",
+  "exitCode": 0,
+  "usage": {
+    "input": 7,
+    "output": 2256,
+    "cacheRead": 49640,
+    "cacheWrite": 4242,
+    "cost": 0.0646605,
+    "turns": 5
+  },
+  "model": "amazon-bedrock/us.anthropic.claude-sonnet-4-6",
+  "attemptedModels": [
+    "amazon-bedrock/us.anthropic.claude-sonnet-4-6"
+  ],
+  "modelAttempts": [
+    {
+      "model": "amazon-bedrock/us.anthropic.claude-sonnet-4-6",
+      "success": true,
+      "exitCode": 0,
+      "usage": {
+        "input": 7,
+        "output": 2256,
+        "cacheRead": 49640,
+        "cacheWrite": 4242,
+        "cost": 0.0646605,
+        "turns": 5
+      }
+    }
+  ],
+  "durationMs": 67259,
+  "toolCount": 4,
+  "transcriptPath": "/mnt/c/Users/juanc/Desktop/dreamhouse/landing/.pi-subagents/artifacts/20efe16c_delegate_0_transcript.jsonl",
+  "timestamp": 1783713520226
+}

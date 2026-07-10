@@ -1,0 +1,37 @@
+{
+  "runId": "ac882725",
+  "agent": "delegate",
+  "task": "Write a PRD/proposal artifact and save it to openspec/changes/policies-section/proposal.md in /mnt/c/Users/juanc/Desktop/dreamhouse/landing.\n\n## Context\nLanding page for DreamHouse Baradero — a vacation rental property in Argentina. Built with Next.js 14, TypeScript, Tailwind CSS, shadcn/ui.\n\n## Change: Add \"Políticas\" section\n\n### Problem / Motivation\nPotential guests currently have no clear, scannable summary of house rules and booking conditions. This information is buried in the FAQ as individual answers. A dedicated Políticas section reduces pre-booking friction and sets expectations upfront, leading to fewer questions and disputes.\n\n### Target users\nPotential guests visiting the landing page before deciding to book. They need a quick-scan summary of terms before contacting to reserve.\n\n### Confirmed policies (4 items)\n1. **Reserva con Seña** — La reserva se confirma abonando el 30% de la estadía\n2. **Sin Reembolso** — Una vez señada la reserva no se realiza reembolso. Se puede reprogramar la fecha (el precio puede variar según la fecha elegida)\n3. **Mascotas Bienvenidas** — Aceptamos todo tipo de mascotas, sin límite de cantidad\n4. **Check-in / Check-out** — Check-in: 12:00 hs. Check-out: 10:00 hs. Late check-out disponible con costo adicional — consultanos\n\n### User decisions\n- Visual structure: **Accordion** (like existing FAQSection)\n- Navbar: **Yes** — add \"Políticas\" link pointing to id=\"politicas\"\n- Pets: No limits, no restrictions\n- Late check-out price: Not shown — \"consultanos\"\n\n### Technical scope\n- CREATE `components/sections/policies-section.tsx` — accordion variant (not card grid)\n- MODIFY `app/page.tsx` — import and insert after `id=\"disponibilidad\"`, before FAQSection\n- MODIFY `components/layouts/floating-navbar.tsx` — add `{ label: \"Políticas\", id: \"politicas\" }` after \"Disponibilidad\"\n- Estimated lines changed: ~70–90 LOC\n\n### Out of scope\n- Removing FAQ items that reference policies (keep for detail)\n- Pricing display for late check-out\n- Any backend changes\n\n### Risks\n1. Navbar may overflow on md-breakpoint with 7 items — needs visual test\n2. Content overlap with FAQ — intentional (Políticas = summary, FAQ = detail)\n3. Background alternation: Políticas uses `bg-muted/30` to alternate with plain AvailabilitySection\n\n### Success criteria\n- Section visible at id=\"politicas\" in page scroll flow\n- All 4 policies rendered in accordion\n- Nav link \"Políticas\" scrolls to section\n- Consistent with existing design system (Playfair heading, terracotta primary, lucide icons)\n\n---\n\nWrite the proposal as a structured markdown document covering all of the above. Save it to:\n/mnt/c/Users/juanc/Desktop/dreamhouse/landing/openspec/changes/policies-section/proposal.md\n\nUse this exact format:\n# Proposal — policies-section\n## Problem\n## Target Users\n## Business Rules\n## Product Outcome\n## Scope\n### In scope\n### Out of scope\n## Risks\n## Non-goals\n## Success Criteria",
+  "exitCode": 0,
+  "usage": {
+    "input": 6,
+    "output": 2579,
+    "cacheRead": 29085,
+    "cacheWrite": 11368,
+    "cost": 0.09005849999999999,
+    "turns": 4
+  },
+  "model": "amazon-bedrock/us.anthropic.claude-sonnet-4-6",
+  "attemptedModels": [
+    "amazon-bedrock/us.anthropic.claude-sonnet-4-6"
+  ],
+  "modelAttempts": [
+    {
+      "model": "amazon-bedrock/us.anthropic.claude-sonnet-4-6",
+      "success": true,
+      "exitCode": 0,
+      "usage": {
+        "input": 6,
+        "output": 2579,
+        "cacheRead": 29085,
+        "cacheWrite": 11368,
+        "cost": 0.09005849999999999,
+        "turns": 4
+      }
+    }
+  ],
+  "durationMs": 81518,
+  "toolCount": 3,
+  "transcriptPath": "/mnt/c/Users/juanc/Desktop/dreamhouse/landing/.pi-subagents/artifacts/ac882725_delegate_0_transcript.jsonl",
+  "timestamp": 1783713087407
+}

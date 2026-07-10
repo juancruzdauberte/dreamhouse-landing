@@ -1,0 +1,12 @@
+project: dreamhouse-landing
+description: Landing page de alquiler turístico para Dreamhouse
+artifact_store: openspec
+execution_mode: interactive
+pr_strategy: single-pr-default
+review_budget_lines: 400
+strict_tdd: false
+stack:
+  framework: Next.js 14 (App Router)
+  language: TypeScript
+  styling: Tailwind CSS
+  components: shadcn/ui

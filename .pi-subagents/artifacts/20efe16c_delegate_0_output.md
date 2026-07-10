@@ -1,0 +1,1 @@
+Artifact escrito. No hay archivos staged.

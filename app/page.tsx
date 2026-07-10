@@ -3,6 +3,7 @@ import { PropertyDescription } from "@/components/sections/property-description"
 import { GallerySection } from "@/components/sections/gallery-section";
 import { AmenitiesSection } from "@/components/sections/amenities-section";
 import { FAQSection } from "@/components/sections/faq-section";
+import { PoliciesSection } from "@/components/sections/policies-section";
 import { LocationSection } from "@/components/sections/location-section";
 import { CTASection } from "@/components/sections/cta-section";
 import { Footer } from "@/components/layouts/footer";
@@ -37,6 +38,11 @@ export default function Home() {
       <AnimatedSection animation="fadeInUp" delay={300}>
         <div id="disponibilidad">
           <AvailabilitySection />
+        </div>
+      </AnimatedSection>
+      <AnimatedSection animation="fadeInUp" delay={200}>
+        <div id="politicas">
+          <PoliciesSection />
         </div>
       </AnimatedSection>
       <AnimatedSection animation="fadeInUp" delay={300}>

@@ -30,6 +30,7 @@ export function FloatingNavbar() {
     { label: "Galería", id: "galeria" },
     { label: "Servicios", id: "servicios" },
     { label: "Disponibilidad", id: "disponibilidad" },
+    { label: "Políticas", id: "politicas" },
     { label: "Ubicación", id: "ubicacion" },
     { label: "Contacto", id: "reservar" },
   ];
