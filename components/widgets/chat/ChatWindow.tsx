@@ -70,9 +70,17 @@ export function ChatWindow({ onClose }: ChatWindowProps) {
   }
 
   return (
-    <div className="absolute bottom-full right-0 mb-3 w-80 h-[450px] bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-100 animate-in fade-in slide-in-from-bottom-4 duration-200">
+    // Mobile: fixed al viewport, se achica con el teclado gracias a dvh.
+    // Desktop (md+): absolute sobre el botón, tamaño fijo.
+    <div className="
+      fixed bottom-20 right-4 left-4
+      max-h-[calc(100dvh-6rem)]
+      md:absolute md:bottom-full md:right-0 md:left-auto md:w-80 md:h-[450px] md:max-h-none
+      bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden border border-gray-100
+      animate-in fade-in slide-in-from-bottom-4 duration-200
+    ">
       {/* Header */}
-      <div className="flex items-center justify-between px-4 py-3 bg-[#1a73e8] text-white shrink-0">
+      <div className="flex items-center justify-between px-4 py-3 bg-primary text-primary-foreground shrink-0">
         <div className="flex items-center gap-2">
           <div className="w-2 h-2 bg-green-400 rounded-full" />
           <span className="font-medium text-sm">DreamHouse Asistente</span>
@@ -87,7 +95,7 @@ export function ChatWindow({ onClose }: ChatWindowProps) {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-3 py-3 space-y-1">
+      <div className="flex-1 overflow-y-auto px-3 py-3 space-y-1 min-h-0">
         {messages.map((msg, i) =>
           msg.role === "bot" ? (
             <div
@@ -103,7 +111,7 @@ export function ChatWindow({ onClose }: ChatWindowProps) {
               key={i}
               className="flex justify-end mb-3 animate-in fade-in slide-in-from-bottom-2 duration-300"
             >
-              <div className="bg-[#1a73e8] text-white rounded-2xl rounded-tr-sm px-3 py-2 text-sm max-w-[85%] leading-relaxed">
+              <div className="bg-primary text-primary-foreground rounded-2xl rounded-tr-sm px-3 py-2 text-sm max-w-[85%] leading-relaxed">
                 {msg.content}
               </div>
             </div>
@@ -123,13 +131,13 @@ export function ChatWindow({ onClose }: ChatWindowProps) {
           onKeyDown={handleKeyDown}
           disabled={isLoading}
           placeholder="Escribí tu pregunta..."
-          className="flex-1 text-sm border border-gray-200 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#1a73e8]/30 disabled:opacity-50 bg-gray-50"
+          className="flex-1 text-sm border border-gray-200 rounded-xl px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary/30 disabled:opacity-50 bg-gray-50"
         />
         <button
           onClick={handleSend}
           disabled={isLoading || !input.trim()}
           aria-label="Enviar mensaje"
-          className="w-9 h-9 bg-[#1a73e8] text-white rounded-xl flex items-center justify-center hover:bg-[#1558b0] transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
+          className="w-9 h-9 bg-primary text-primary-foreground rounded-xl flex items-center justify-center hover:bg-primary/90 transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed shrink-0"
         >
           <Send size={15} />
         </button>
