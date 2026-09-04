@@ -1,6 +1,12 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
+
+const ChatWidget = dynamic(
+  () => import("./chat/ChatWidget").then((m) => ({ default: m.ChatWidget })),
+  { ssr: false }
+);
 
 export function FloatButtons() {
   const handleWhatsAppClick = () => {
@@ -22,6 +28,8 @@ export function FloatButtons() {
 
   return (
     <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 flex flex-col items-center gap-3">
+      {/* Chat widget */}
+      <ChatWidget />
       {/* Botón de Disponibilidad */}
       <Button
         onClick={handleAvailabilityClick}
