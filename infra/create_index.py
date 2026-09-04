@@ -3,6 +3,7 @@ create_index.py
 Crea el índice vectorial en OpenSearch Serverless usando requests-aws4auth.
 """
 
+import logging
 import os
 import json
 import time
@@ -10,6 +11,12 @@ import time
 import boto3
 import requests
 from requests_aws4auth import AWS4Auth
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s %(levelname)s %(message)s"
+)
+log = logging.getLogger(__name__)
 
 # ─── Config ────────────────────────────────────────────────────────────────────
 
@@ -46,13 +53,13 @@ def wait_for_collection(max_wait=300):
         aws_secret_access_key=SECRET_KEY,
         aws_session_token=SESSION_TOKEN
     )
-    print(f"Esperando que la colección esté ACTIVE...")
+    log.info("Esperando que la colección esté ACTIVE...")
     for _ in range(max_wait // 10):
         resp    = client.batch_get_collection(ids=[COLLECTION_ID])
         details = resp.get("collectionDetails", [])
         if details:
             status = details[0].get("status", "UNKNOWN")
-            print(f"  Estado: {status}")
+            log.info("  Estado: %s", status)
             if status == "ACTIVE":
                 return
             if status == "FAILED":
@@ -74,20 +81,20 @@ def create_index(max_retries=5, wait_seconds=20):
             json=INDEX_BODY,
             headers={"Content-Type": "application/json"}
         )
-        print(f"  Intento {attempt}: HTTP {resp.status_code}")
+        log.info("  Intento %d: HTTP %s", attempt, resp.status_code)
 
         if resp.status_code in (200, 201):
-            print(f"✅ Índice creado")
+            log.info("Índice creado")
             return
 
         if resp.status_code == 400 and "resource_already_exists_exception" in resp.text:
-            print("✅ El índice ya existe — OK")
+            log.info("El índice ya existe — OK")
             return
 
-        print(f"  Respuesta: {resp.text[:200]}")
+        log.debug("  Respuesta: %s", resp.text[:200])
 
         if attempt < max_retries:
-            print(f"  Esperando {wait_seconds}s...")
+            log.info("  Esperando %ds...", wait_seconds)
             time.sleep(wait_seconds)
 
     raise RuntimeError(f"No se pudo crear el índice después de {max_retries} intentos")
@@ -95,8 +102,7 @@ def create_index(max_retries=5, wait_seconds=20):
 # ─── Main ──────────────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
-    print(f"Endpoint : {ENDPOINT}")
-    print(f"Key      : {ACCESS_KEY[:8]}...")
+    log.info("Endpoint : %s", ENDPOINT)
     wait_for_collection()
-    print(f"Creando índice '{INDEX_NAME}'...")
+    log.info("Creando índice '%s'...", INDEX_NAME)
     create_index()
