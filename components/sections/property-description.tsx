@@ -88,7 +88,7 @@ export function PropertyDescription() {
             </div>
             <div className="flex flex-wrap gap-2">
               {[
-                "Capacidad 9 personas",
+                "Capacidad 10 personas",
                 "3 Dormitorios",
                 "6 camas",
                 "2 Baños",

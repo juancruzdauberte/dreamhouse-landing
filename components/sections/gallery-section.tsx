@@ -148,6 +148,12 @@ const allImages: GalleryImage[] = [
     category: ["Patio"],
     span: "normal",
   },
+  {
+    src: "https://res.cloudinary.com/dttpgbmdx/image/upload/v1788727334/dh_parrilla_nkv6wg.jpg",
+    alt: "Parrilla",
+    category: ["Patio", "Cocina"],
+    span: "normal",
+  },
 ];
 
 const CATEGORIES: Category[] = [

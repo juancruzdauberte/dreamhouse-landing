@@ -16,7 +16,7 @@ export function FAQSection() {
     {
       question: "¿Cuál es la capacidad máxima de la propiedad?",
       answer:
-        "Dreamhouse puede alojar cómodamente hasta 9 personas en 3 dormitorios con camas matrimoniales e individuales. Contamos con ropa de cama de alta  para todos los huéspedes pero no incluimos toallas de baño.",
+        "Dreamhouse puede alojar cómodamente hasta 10 personas en 3 dormitorios con camas matrimoniales e individuales. Contamos con ropa de cama de alta  para todos los huéspedes pero no incluimos toallas de baño.",
     },
     {
       question: "¿Como puedo reservar en Dreamhouse Baradero?",
