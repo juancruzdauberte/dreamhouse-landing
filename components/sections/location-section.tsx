@@ -2,7 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Clock, Car, Plane } from "lucide-react";
+import { Clock, Car, Plane, MapPin } from "lucide-react";
 import { AnimatedSection } from "@/components/sections/animated-section";
 
 export function LocationSection() {
@@ -52,7 +52,39 @@ export function LocationSection() {
               </div>
             </AnimatedSection>
 
-            {/* Transportation */}
+            {/* How to get there */}
+                <AnimatedSection animation="fadeInUp" delay={250}>
+                  <Card className="hover:shadow-lg transition-all duration-300 bg-white">
+                    <CardHeader className="pb-3">
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-5 w-5 text-primary" />
+                        <CardTitle className="text-md">Cómo llegar</CardTitle>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <ol className="space-y-3 text-sm text-muted-foreground list-none">
+                        <li className="flex gap-3">
+                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">1</span>
+                          <span>Entrá por la <strong className="text-foreground">Ruta 41</strong> y avanzá hasta el primer y único semáforo, frente al club <strong className="text-foreground">Sportivo</strong>.</span>
+                        </li>
+                        <li className="flex gap-3">
+                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">2</span>
+                          <span>Doblá a la <strong className="text-foreground">derecha</strong> por <strong className="text-foreground">calle Carrasco</strong> y seguí hasta llegar a <strong className="text-foreground">calle Maipú</strong>. En esa esquina vas a ver la Panadería <em>El Francés</em> y una pinturería.</span>
+                        </li>
+                        <li className="flex gap-3">
+                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">3</span>
+                          <span>Doblá a la <strong className="text-foreground">izquierda</strong> en <strong className="text-foreground">calle Maipú</strong> y seguí hasta el final de la calle.</span>
+                        </li>
+                        <li className="flex gap-3">
+                          <span className="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">4</span>
+                          <span>Doblá a la <strong className="text-foreground">izquierda</strong> en <strong className="text-foreground">calle Che Guevara</strong>. La casa está a mitad de cuadra, con un <strong className="text-foreground">portón negro</strong>.</span>
+                        </li>
+                      </ol>
+                    </CardContent>
+                  </Card>
+                </AnimatedSection>
+
+                {/* Transportation */}
             <div className="grid sm:grid-cols-2 gap-4">
               <AnimatedSection animation="fadeInLeft" delay={300}>
                 <Card className="hover:shadow-lg transition-all duration-300 group bg-white">
