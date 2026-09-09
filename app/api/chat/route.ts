@@ -1,12 +1,29 @@
 import {
-  BedrockAgentRuntimeClient,
-  RetrieveAndGenerateCommand,
-} from "@aws-sdk/client-bedrock-agent-runtime";
+  BedrockRuntimeClient,
+  ConverseCommand,
+} from "@aws-sdk/client-bedrock-runtime";
 import { NextRequest, NextResponse } from "next/server";
+import { readFileSync } from "fs";
+import { join } from "path";
 
-const client = new BedrockAgentRuntimeClient({
+const client = new BedrockRuntimeClient({
   region: process.env.AWS_REGION ?? "us-east-1",
 });
+
+// FAQ cargado una vez en memoria al iniciar el servidor.
+// El archivo vive en la raíz del repositorio y se lee en runtime.
+const FAQ_CONTENT = readFileSync(
+  join(process.cwd(), "dreamhouse-knowledge-base.md"),
+  "utf-8"
+);
+
+const SYSTEM_PROMPT = `Eres un asistente virtual de DreamHouse Baradero, una casa quinta de lujo para alquiler vacacional.
+Tu rol es responder preguntas sobre la propiedad, sus amenidades, precios, disponibilidad y políticas de reserva.
+Responde en español, de forma clara, directa y amigable.
+Usa ÚNICAMENTE la información del siguiente documento. Si la respuesta no está disponible en el documento, indícalo y sugiere contactar por WhatsApp al +54 3329 305210 o por email a dreamhousebaradero779@gmail.com.
+
+INFORMACIÓN DE LA PROPIEDAD:
+${FAQ_CONTENT}`;
 
 export async function POST(req: NextRequest) {
   let body: { message?: string };
@@ -24,31 +41,31 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const command = new RetrieveAndGenerateCommand({
-      input: { text: message.trim() },
-      retrieveAndGenerateConfiguration: {
-        type: "KNOWLEDGE_BASE",
-        knowledgeBaseConfiguration: {
-          knowledgeBaseId: process.env.BEDROCK_KNOWLEDGE_BASE_ID!,
-          modelArn: process.env.BEDROCK_MODEL_ARN!,
-          generationConfiguration: {
-            guardrailConfiguration: {
-              guardrailId: process.env.BEDROCK_GUARDRAIL_ID!,
-              guardrailVersion: process.env.BEDROCK_GUARDRAIL_VERSION ?? "1",
-            },
-            promptTemplate: {
-              textPromptTemplate:
-                "Sos un asistente de DreamHouse. Respondé en español de forma clara y directa usando solo la información disponible.\n\nInformación:\n$search_results$\n\nPregunta: $query$\nRespuesta:",
-            },
-          },
+    const command = new ConverseCommand({
+      modelId: process.env.BEDROCK_MODEL_ARN!,
+      system: [{ text: SYSTEM_PROMPT }],
+      messages: [
+        {
+          role: "user",
+          content: [{ text: message.trim() }],
         },
+      ],
+      guardrailConfig: {
+        guardrailIdentifier: process.env.BEDROCK_GUARDRAIL_ID!,
+        guardrailVersion: process.env.BEDROCK_GUARDRAIL_VERSION ?? "1",
+      },
+      inferenceConfig: {
+        maxTokens: 512,
+        temperature: 0.1,
+        topP: 0.9,
       },
     });
 
     const response = await client.send(command);
+
     const reply =
-      response.output?.text ??
-      "No encontré información sobre eso. ¿Podés reformular la pregunta?";
+      response.output?.message?.content?.[0]?.text ??
+      "No encontré información sobre eso. ¿Puedes reformular la pregunta?";
 
     return NextResponse.json({ reply });
   } catch (error) {

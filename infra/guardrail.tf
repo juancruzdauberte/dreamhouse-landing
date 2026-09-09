@@ -243,30 +243,11 @@ resource "aws_bedrock_guardrail" "chatbot" {
 
   }
 
-  # ==========================================================================
-  # 5. CONTEXTUAL GROUNDING — Anti-alucinación
-  # Verifica que las respuestas del modelo estén basadas en el contexto
-  # recuperado del Knowledge Base. Si el score cae por debajo del umbral,
-  # la respuesta se bloquea y se muestra blocked_outputs_messaging.
-  #
-  # GROUNDING: mide si la respuesta está basada en el contexto del KB (0-1)
-  # RELEVANCE: mide si la respuesta es relevante a la pregunta del usuario (0-1)
-  # Threshold 0.7 = bloquea si menos del 70% está fundamentado en el KB
-  # ==========================================================================
-  contextual_grounding_policy_config {
-
-    # Grounding: la respuesta DEBE estar basada en el documento FAQ del KB
-    filters_config {
-      type      = "GROUNDING"
-      threshold = 0.7
-    }
-
-    # Relevance: la respuesta DEBE ser relevante a la pregunta del usuario
-    filters_config {
-      type      = "RELEVANCE"
-      threshold = 0.7
-    }
-  }
+  # NOTA: contextual_grounding_policy_config fue eliminado.
+  # Esta política requería el contexto del Knowledge Base como fuente de grounding.
+  # Con la nueva arquitectura (FAQ en system prompt), el grounding es inherente:
+  # el modelo solo tiene acceso a la información del documento incluido.
+  # Los filtros de topics, content, PII y words siguen activos.
 
   tags = {
     Project     = var.project_name

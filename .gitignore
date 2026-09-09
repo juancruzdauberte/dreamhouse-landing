@@ -38,3 +38,4 @@ infra/*.tfvars
 /docs
 
 dreamhouse-knowledge-base.md
+dreamhouse-architecture.visual-check.json
