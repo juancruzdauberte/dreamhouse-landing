@@ -5,12 +5,11 @@ import { AmenitiesSection } from "@/components/sections/amenities-section";
 import { FAQSection } from "@/components/sections/faq-section";
 import { PoliciesSection } from "@/components/sections/policies-section";
 import { LocationSection } from "@/components/sections/location-section";
-import { CTASection } from "@/components/sections/cta-section";
 import { Footer } from "@/components/layouts/footer";
 import { FloatingNavbar } from "@/components/layouts/floating-navbar";
 import { AnimatedSection } from "@/components/sections/animated-section";
 import { FloatButtons } from "@/components/widgets/float-buttons";
-import AvailabilitySection from "@/components/sections/availability-section";
+import { BookingSection } from "@/components/sections/booking-section";
 
 export default function Home() {
   return (
@@ -20,6 +19,8 @@ export default function Home() {
       <div id="hero">
         <HeroSection />
       </div>
+      {/* Booking Section - Formulario de Reservas */}
+      <BookingSection />
       <AnimatedSection animation="fadeInUp" delay={200}>
         <div id="descripcion">
           <PropertyDescription />
@@ -35,11 +36,6 @@ export default function Home() {
           <AmenitiesSection />
         </div>
       </AnimatedSection>
-      <AnimatedSection animation="fadeInUp" delay={300}>
-        <div id="disponibilidad">
-          <AvailabilitySection />
-        </div>
-      </AnimatedSection>
       <AnimatedSection animation="fadeInUp" delay={200}>
         <div id="politicas">
           <PoliciesSection />
@@ -51,12 +47,6 @@ export default function Home() {
       <AnimatedSection animation="scaleIn" delay={200}>
         <div id="ubicacion">
           <LocationSection />
-        </div>
-      </AnimatedSection>
-
-      <AnimatedSection animation="fadeInUp" delay={100}>
-        <div id="reservar">
-          <CTASection />
         </div>
       </AnimatedSection>
       <Footer />
