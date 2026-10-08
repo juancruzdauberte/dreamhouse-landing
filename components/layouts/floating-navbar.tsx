@@ -29,10 +29,9 @@ export function FloatingNavbar() {
     { label: "Inicio", id: "hero" },
     { label: "Galería", id: "galeria" },
     { label: "Servicios", id: "servicios" },
-    { label: "Disponibilidad", id: "disponibilidad" },
     { label: "Políticas", id: "politicas" },
     { label: "Ubicación", id: "ubicacion" },
-    { label: "Contacto", id: "reservar" },
+    { label: "Reservar", id: "reservar" },
   ];
 
   return (

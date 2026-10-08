@@ -99,7 +99,6 @@ export function Footer() {
                 { id: "galeria", text: "Galería" },
                 { id: "servicios", text: "Servicios" },
                 { id: "ubicacion", text: "Ubicación" },
-                { id: "disponibilidad", text: "Disponibilidad" },
                 { id: "reservar", text: "Reservar" },
               ].map((link) => (
                 <button

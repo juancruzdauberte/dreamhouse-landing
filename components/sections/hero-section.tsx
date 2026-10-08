@@ -124,7 +124,6 @@ export function HeroSection() {
           </svg>
         </button>
       </div>
-      \
     </section>
   );
 }
