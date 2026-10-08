@@ -13,7 +13,7 @@ import BookingBar from "@/components/widgets/BookingBar";
 
 const ChatWidget = dynamic(
   () => import("./chat/ChatWidget").then((m) => ({ default: m.ChatWidget })),
-  { ssr: false }
+  { ssr: false },
 );
 
 export function FloatButtons() {
@@ -23,16 +23,13 @@ export function FloatButtons() {
     <>
       {/* Booking Modal */}
       <Dialog open={isBookingOpen} onOpenChange={setIsBookingOpen}>
-        <DialogContent className="sm:max-w-md w-[95vw] max-h-[90vh] overflow-y-auto p-4 sm:p-6 rounded-xl">
-          <DialogHeader className="mb-4">
+        <DialogContent className="sm:max-w-lg md:max-w-4xl w-4/5 md:w-full max-h-[90vh] overflow-y-auto p-4 sm:p-6 rounded-xl">
+          <DialogHeader>
             <DialogTitle className="text-2xl font-bold text-brand-charcoal text-center sm:text-left">
-              Reserva tu estadía
+              Contacta con nosotros por WhatsApp
             </DialogTitle>
-            <p className="text-sm text-brand-olive mt-2 text-center sm:text-left">
-              Completa los datos y nos contactaremos por WhatsApp
-            </p>
           </DialogHeader>
-          <div className="mt-6">
+          <div className="mt-2 w-full">
             <BookingBar compact={true} />
           </div>
         </DialogContent>

@@ -18,17 +18,38 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
   const [checkin, setCheckin] = useState("");
   const [checkout, setCheckout] = useState("");
   const [guests, setGuests] = useState("10");
+  const [showValidationMessage, setShowValidationMessage] = useState(false);
 
-  // Formatea las fechas para WhatsApp
-  const formattedCheckin = formatDate(checkin);
-  const formattedCheckout = formatDate(checkout);
+  // Validar que ambas fechas estén completas
+  const isFormValid = checkin && checkout;
 
-  // URL de WhatsApp con fechas formateadas
-  const whatsappUrl =
-    "https://wa.me/543329305210?text=" +
-    encodeURIComponent(
-      `Hola! Estoy interesado en reservar una estadía.\n\nFechas de llegada: ${formattedCheckin}\nFechas de salida: ${formattedCheckout}\nHuéspedes: ${guests} personas`,
-    );
+  // Función para manejar el envío a WhatsApp
+  const handleBooking = () => {
+    if (!isFormValid) {
+      setShowValidationMessage(true);
+      return;
+    }
+
+    const formattedCheckin = formatDate(checkin);
+    const formattedCheckout = formatDate(checkout);
+    const whatsappUrl =
+      "https://wa.me/543329305210?text=" +
+      encodeURIComponent(
+        `Hola! Estoy interesado en reservar una estadía.\n\nFechas de llegada: ${formattedCheckin}\nFechas de salida: ${formattedCheckout}\nHuéspedes: ${guests} personas`,
+      );
+    window.open(whatsappUrl, "_blank");
+  };
+
+  // Limpiar mensaje cuando el usuario completa los campos
+  const handleCheckInChange = (value: string) => {
+    setCheckin(value);
+    if (value && checkout) setShowValidationMessage(false);
+  };
+
+  const handleCheckOutChange = (value: string) => {
+    setCheckout(value);
+    if (checkin && value) setShowValidationMessage(false);
+  };
 
   if (compact) {
     // Modo compacto para el modal flotante - Optimizado para Mobile
@@ -41,6 +62,15 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
               "linear-gradient(to bottom, rgba(245, 245, 244, 0.5), rgba(255, 255, 255, 1))",
           }}
         >
+          {/* Mensaje de validación */}
+          {showValidationMessage && (
+            <div className="px-4 py-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm text-red-700 font-medium text-center">
+                Por favor, ingresa las fechas de llegada y salida
+              </p>
+            </div>
+          )}
+
           {/* Grid responsivo - 1 columna en mobile, 2 en tablet, 4 en desktop */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Check-in */}
@@ -61,7 +91,7 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
                 id="check-in-date"
                 type="date"
                 value={checkin}
-                onChange={(e) => setCheckin(e.target.value)}
+                onChange={(e) => handleCheckInChange(e.target.value)}
               />
             </div>
 
@@ -85,7 +115,7 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
                 min={checkin}
                 disabled={!checkin}
                 value={checkout}
-                onChange={(e) => setCheckout(e.target.value)}
+                onChange={(e) => handleCheckOutChange(e.target.value)}
               />
             </div>
 
@@ -122,15 +152,13 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
 
             {/* Submit Button - Full width en mobile, normal en desktop */}
             <div className="col-span-1 sm:col-span-2 lg:col-span-1 flex items-end">
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noreferrer"
+              <button
+                onClick={handleBooking}
                 className="w-full py-3 px-4 bg-primary hover:bg-brand-terracotta-dark text-white font-semibold text-sm rounded-lg transition-all duration-200 flex items-center justify-center gap-2 shadow-md hover:shadow-lg transform hover:-translate-y-1 active:scale-95 whitespace-nowrap"
               >
                 <MessageCircle size={18} className="flex-shrink-0" />
                 <span>Consultar</span>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -150,10 +178,19 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
   // Modo normal (Desktop)
   return (
     <div
-      className="relative max-w-5xl mx-auto z-20 px-4"
+      className="relative max-w-7xl mx-auto z-20 px-4"
       data-purpose="booking-bar"
       id="disponibilidad"
     >
+      {/* Mensaje de validación */}
+      {showValidationMessage && (
+        <div className="mb-4 px-4 py-3 bg-red-50 border border-red-200 rounded-lg">
+          <p className="text-sm text-red-700 font-medium text-center">
+            Por favor, ingresa las fechas de llegada y salida
+          </p>
+        </div>
+      )}
+
       <div
         className="bg-white/98 backdrop-blur-md rounded-2xl shadow-lg p-6 sm:p-8 border border-stone-200 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 items-end animate-fade-in-up"
         style={{
@@ -176,7 +213,7 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
             id="check-in-date"
             type="date"
             value={checkin}
-            onChange={(e) => setCheckin(e.target.value)}
+            onChange={(e) => handleCheckInChange(e.target.value)}
           />
         </div>
 
@@ -197,7 +234,7 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
             min={checkin}
             disabled={!checkin}
             value={checkout}
-            onChange={(e) => setCheckout(e.target.value)}
+            onChange={(e) => handleCheckOutChange(e.target.value)}
           />
         </div>
 
@@ -231,15 +268,13 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
 
         {/* Submit Button */}
         <div>
-          <a
-            href={whatsappUrl}
-            target="_blank"
-            rel="noreferrer"
+          <button
+            onClick={handleBooking}
             className="w-full py-3.5 px-4 bg-primary hover:bg-brand-terracotta-dark text-white font-semibold text-sm rounded-xl transition duration-200 flex items-center justify-center gap-2 shadow-sm hover:shadow-md transform hover:-translate-y-0.5 active:scale-95"
           >
             <MessageCircle size={18} />
             <span>Consultar</span>
-          </a>
+          </button>
         </div>
       </div>
     </div>
