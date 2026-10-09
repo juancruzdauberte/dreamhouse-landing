@@ -35,7 +35,7 @@ export default function BookingBar({ compact = false }: BookingBarProps) {
     const whatsappUrl =
       "https://wa.me/543329305210?text=" +
       encodeURIComponent(
-        `Hola! Estoy interesado en reservar una estadía.\n\nFechas de llegada: ${formattedCheckin}\nFechas de salida: ${formattedCheckout}\nHuéspedes: ${guests} personas`,
+        `Hola! Estoy interesado en reservar una estadía en Dreamhouse Baradero.\n\nFechas de llegada: ${formattedCheckin}\nFechas de salida: ${formattedCheckout}\nHuéspedes: ${guests} personas`,
       );
     window.open(whatsappUrl, "_blank");
   };
